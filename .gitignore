@@ -1,0 +1,8 @@
+.vs
+packages
+/**/DROP/
+/**/TEMP/
+/**/packages/
+/**/bin/
+/**/obj/
+IDAnalyzer/log.txt
