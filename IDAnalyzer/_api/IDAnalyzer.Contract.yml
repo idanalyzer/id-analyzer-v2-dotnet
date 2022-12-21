@@ -1,0 +1,931 @@
+### YamlMime:ManagedReference
+items:
+- uid: IDAnalyzer.Contract
+  commentId: T:IDAnalyzer.Contract
+  id: Contract
+  parent: IDAnalyzer
+  children:
+  - IDAnalyzer.Contract.#ctor(System.String)
+  - IDAnalyzer.Contract.createTemplate(System.String,System.String,System.String,System.String,System.String)
+  - IDAnalyzer.Contract.deleteTemplate(System.String)
+  - IDAnalyzer.Contract.generate(System.String,System.String,System.String,System.Collections.Hashtable)
+  - IDAnalyzer.Contract.getTemplate(System.String)
+  - IDAnalyzer.Contract.listTemplate(System.Int32,System.Int32,System.Int32,System.String)
+  - IDAnalyzer.Contract.updateTemplate(System.String,System.String,System.String,System.String,System.String,System.String)
+  langs:
+  - csharp
+  - vb
+  name: Contract
+  nameWithType: Contract
+  fullName: IDAnalyzer.Contract
+  type: Class
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: Contract
+    path: IDAnalyzer.cs
+    startLine: 553
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: 'public class Contract : ApiParent'
+    content.vb: >-
+      Public Class Contract
+          Inherits ApiParent
+  inheritance:
+  - System.Object
+  - IDAnalyzer.ApiParent
+  inheritedMembers:
+  - IDAnalyzer.ApiParent.apiKey
+  - IDAnalyzer.ApiParent.client_lib
+  - IDAnalyzer.ApiParent.config
+  - IDAnalyzer.ApiParent.throwError
+  - IDAnalyzer.ApiParent.sess
+  - IDAnalyzer.ApiParent.getApiKey(System.String)
+  - IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+  - IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: IDAnalyzer.Contract.#ctor(System.String)
+  commentId: M:IDAnalyzer.Contract.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: IDAnalyzer.Contract
+  langs:
+  - csharp
+  - vb
+  name: Contract(String)
+  nameWithType: Contract.Contract(String)
+  fullName: IDAnalyzer.Contract.Contract(System.String)
+  type: Constructor
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: .ctor
+    path: IDAnalyzer.cs
+    startLine: 555
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: public Contract(string apiKey = null)
+    parameters:
+    - id: apiKey
+      type: System.String
+    content.vb: Public Sub New(apiKey As String = Nothing)
+  overload: IDAnalyzer.Contract.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Contract.generate(System.String,System.String,System.String,System.Collections.Hashtable)
+  commentId: M:IDAnalyzer.Contract.generate(System.String,System.String,System.String,System.Collections.Hashtable)
+  id: generate(System.String,System.String,System.String,System.Collections.Hashtable)
+  parent: IDAnalyzer.Contract
+  langs:
+  - csharp
+  - vb
+  name: generate(String, String, String, Hashtable)
+  nameWithType: Contract.generate(String, String, String, Hashtable)
+  fullName: IDAnalyzer.Contract.generate(System.String, System.String, System.String, System.Collections.Hashtable)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: generate
+    path: IDAnalyzer.cs
+    startLine: 568
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nGenerate document using template and transaction data\n"
+  example: []
+  syntax:
+    content: public JObject generate(string templateId, string format = "PDF", string transactionId = "", Hashtable fillData = null)
+    parameters:
+    - id: templateId
+      type: System.String
+      description: Template ID
+    - id: format
+      type: System.String
+      description: PDF, DOCX or HTML
+    - id: transactionId
+      type: System.String
+      description: Fill the template with data from specified transaction
+    - id: fillData
+      type: System.Collections.Hashtable
+      description: Array data in key-value pairs to autofill dynamic fields, data from user ID will be used first in case of a conflict. For example, passing {&quot;myparameter&quot;:&quot;abc&quot;} would fill %{myparameter} in contract template with &quot;abc&quot;.
+    return:
+      type: JObject
+      description: ''
+    content.vb: Public Function generate(templateId As String, format As String = "PDF", transactionId As String = "", fillData As Hashtable = Nothing) As JObject
+  overload: IDAnalyzer.Contract.generate*
+  exceptions:
+  - type: IDAnalyzer.InvalidArgumentException
+    commentId: T:IDAnalyzer.InvalidArgumentException
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Contract.listTemplate(System.Int32,System.Int32,System.Int32,System.String)
+  commentId: M:IDAnalyzer.Contract.listTemplate(System.Int32,System.Int32,System.Int32,System.String)
+  id: listTemplate(System.Int32,System.Int32,System.Int32,System.String)
+  parent: IDAnalyzer.Contract
+  langs:
+  - csharp
+  - vb
+  name: listTemplate(Int32, Int32, Int32, String)
+  nameWithType: Contract.listTemplate(Int32, Int32, Int32, String)
+  fullName: IDAnalyzer.Contract.listTemplate(System.Int32, System.Int32, System.Int32, System.String)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: listTemplate
+    path: IDAnalyzer.cs
+    startLine: 610
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nRetrieve a list of contract templates\n"
+  example: []
+  syntax:
+    content: public JObject listTemplate(int order = -1, int limit = 10, int offset = 0, string filterTemplateId = "")
+    parameters:
+    - id: order
+      type: System.Int32
+      description: Sort results by newest(-1) or oldest(1)
+    - id: limit
+      type: System.Int32
+      description: Number of items to be returned per call
+    - id: offset
+      type: System.Int32
+      description: Start the list from a particular entry index
+    - id: filterTemplateId
+      type: System.String
+      description: Filter result by template ID
+    return:
+      type: JObject
+      description: ''
+    content.vb: Public Function listTemplate(order As Integer = -1, limit As Integer = 10, offset As Integer = 0, filterTemplateId As String = "") As JObject
+  overload: IDAnalyzer.Contract.listTemplate*
+  exceptions:
+  - type: IDAnalyzer.InvalidArgumentException
+    commentId: T:IDAnalyzer.InvalidArgumentException
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Contract.getTemplate(System.String)
+  commentId: M:IDAnalyzer.Contract.getTemplate(System.String)
+  id: getTemplate(System.String)
+  parent: IDAnalyzer.Contract
+  langs:
+  - csharp
+  - vb
+  name: getTemplate(String)
+  nameWithType: Contract.getTemplate(String)
+  fullName: IDAnalyzer.Contract.getTemplate(System.String)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: getTemplate
+    path: IDAnalyzer.cs
+    startLine: 645
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nGet contract template\n"
+  example: []
+  syntax:
+    content: public JObject getTemplate(string templateId = "")
+    parameters:
+    - id: templateId
+      type: System.String
+      description: Template ID
+    return:
+      type: JObject
+      description: ''
+    content.vb: Public Function getTemplate(templateId As String = "") As JObject
+  overload: IDAnalyzer.Contract.getTemplate*
+  exceptions:
+  - type: IDAnalyzer.InvalidArgumentException
+    commentId: T:IDAnalyzer.InvalidArgumentException
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Contract.deleteTemplate(System.String)
+  commentId: M:IDAnalyzer.Contract.deleteTemplate(System.String)
+  id: deleteTemplate(System.String)
+  parent: IDAnalyzer.Contract
+  langs:
+  - csharp
+  - vb
+  name: deleteTemplate(String)
+  nameWithType: Contract.deleteTemplate(String)
+  fullName: IDAnalyzer.Contract.deleteTemplate(System.String)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: deleteTemplate
+    path: IDAnalyzer.cs
+    startLine: 662
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nDelete contract template\n"
+  example: []
+  syntax:
+    content: public JObject deleteTemplate(string templateId = "")
+    parameters:
+    - id: templateId
+      type: System.String
+      description: Template ID
+    return:
+      type: JObject
+      description: ''
+    content.vb: Public Function deleteTemplate(templateId As String = "") As JObject
+  overload: IDAnalyzer.Contract.deleteTemplate*
+  exceptions:
+  - type: IDAnalyzer.InvalidArgumentException
+    commentId: T:IDAnalyzer.InvalidArgumentException
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Contract.createTemplate(System.String,System.String,System.String,System.String,System.String)
+  commentId: M:IDAnalyzer.Contract.createTemplate(System.String,System.String,System.String,System.String,System.String)
+  id: createTemplate(System.String,System.String,System.String,System.String,System.String)
+  parent: IDAnalyzer.Contract
+  langs:
+  - csharp
+  - vb
+  name: createTemplate(String, String, String, String, String)
+  nameWithType: Contract.createTemplate(String, String, String, String, String)
+  fullName: IDAnalyzer.Contract.createTemplate(System.String, System.String, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: createTemplate
+    path: IDAnalyzer.cs
+    startLine: 683
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nCreate new contract template\n"
+  example: []
+  syntax:
+    content: public JObject createTemplate(string name = "", string _content = "", string orientation = "", string timezone = "UTC", string font = "Open Sans")
+    parameters:
+    - id: name
+      type: System.String
+      description: Template name
+    - id: _content
+      type: System.String
+      description: Template HTML content
+    - id: orientation
+      type: System.String
+      description: 0=Portrait(Default) 1=Landscape
+    - id: timezone
+      type: System.String
+      description: Template timezone
+    - id: font
+      type: System.String
+      description: Template font
+    return:
+      type: JObject
+      description: ''
+    content.vb: Public Function createTemplate(name As String = "", _content As String = "", orientation As String = "", timezone As String = "UTC", font As String = "Open Sans") As JObject
+  overload: IDAnalyzer.Contract.createTemplate*
+  exceptions:
+  - type: IDAnalyzer.InvalidArgumentException
+    commentId: T:IDAnalyzer.InvalidArgumentException
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Contract.updateTemplate(System.String,System.String,System.String,System.String,System.String,System.String)
+  commentId: M:IDAnalyzer.Contract.updateTemplate(System.String,System.String,System.String,System.String,System.String,System.String)
+  id: updateTemplate(System.String,System.String,System.String,System.String,System.String,System.String)
+  parent: IDAnalyzer.Contract
+  langs:
+  - csharp
+  - vb
+  name: updateTemplate(String, String, String, String, String, String)
+  nameWithType: Contract.updateTemplate(String, String, String, String, String, String)
+  fullName: IDAnalyzer.Contract.updateTemplate(System.String, System.String, System.String, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: updateTemplate
+    path: IDAnalyzer.cs
+    startLine: 720
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nUpdate contract template\n"
+  example: []
+  syntax:
+    content: public JObject updateTemplate(string templateId = "", string name = "", string _content = "", string orientation = "0", string timezone = "UTC", string font = "Open Sans")
+    parameters:
+    - id: templateId
+      type: System.String
+      description: Template ID
+    - id: name
+      type: System.String
+      description: Template name
+    - id: _content
+      type: System.String
+      description: Template HTML content
+    - id: orientation
+      type: System.String
+      description: 0=Portrait(Default) 1=Landscape
+    - id: timezone
+      type: System.String
+      description: Template timezone
+    - id: font
+      type: System.String
+      description: Template font
+    return:
+      type: JObject
+      description: ''
+    content.vb: Public Function updateTemplate(templateId As String = "", name As String = "", _content As String = "", orientation As String = "0", timezone As String = "UTC", font As String = "Open Sans") As JObject
+  overload: IDAnalyzer.Contract.updateTemplate*
+  exceptions:
+  - type: IDAnalyzer.InvalidArgumentException
+    commentId: T:IDAnalyzer.InvalidArgumentException
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: IDAnalyzer
+  commentId: N:IDAnalyzer
+  name: IDAnalyzer
+  nameWithType: IDAnalyzer
+  fullName: IDAnalyzer
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: IDAnalyzer.ApiParent
+  commentId: T:IDAnalyzer.ApiParent
+  parent: IDAnalyzer
+  name: ApiParent
+  nameWithType: ApiParent
+  fullName: IDAnalyzer.ApiParent
+- uid: IDAnalyzer.ApiParent.apiKey
+  commentId: F:IDAnalyzer.ApiParent.apiKey
+  parent: IDAnalyzer.ApiParent
+  name: apiKey
+  nameWithType: ApiParent.apiKey
+  fullName: IDAnalyzer.ApiParent.apiKey
+- uid: IDAnalyzer.ApiParent.client_lib
+  commentId: F:IDAnalyzer.ApiParent.client_lib
+  parent: IDAnalyzer.ApiParent
+  name: client_lib
+  nameWithType: ApiParent.client_lib
+  fullName: IDAnalyzer.ApiParent.client_lib
+- uid: IDAnalyzer.ApiParent.config
+  commentId: F:IDAnalyzer.ApiParent.config
+  parent: IDAnalyzer.ApiParent
+  name: config
+  nameWithType: ApiParent.config
+  fullName: IDAnalyzer.ApiParent.config
+- uid: IDAnalyzer.ApiParent.throwError
+  commentId: F:IDAnalyzer.ApiParent.throwError
+  parent: IDAnalyzer.ApiParent
+  name: throwError
+  nameWithType: ApiParent.throwError
+  fullName: IDAnalyzer.ApiParent.throwError
+- uid: IDAnalyzer.ApiParent.sess
+  commentId: F:IDAnalyzer.ApiParent.sess
+  parent: IDAnalyzer.ApiParent
+  name: sess
+  nameWithType: ApiParent.sess
+  fullName: IDAnalyzer.ApiParent.sess
+- uid: IDAnalyzer.ApiParent.getApiKey(System.String)
+  commentId: M:IDAnalyzer.ApiParent.getApiKey(System.String)
+  parent: IDAnalyzer.ApiParent
+  isExternal: true
+  name: getApiKey(String)
+  nameWithType: ApiParent.getApiKey(String)
+  fullName: IDAnalyzer.ApiParent.getApiKey(System.String)
+  spec.csharp:
+  - uid: IDAnalyzer.ApiParent.getApiKey(System.String)
+    name: getApiKey
+    nameWithType: ApiParent.getApiKey
+    fullName: IDAnalyzer.ApiParent.getApiKey
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: IDAnalyzer.ApiParent.getApiKey(System.String)
+    name: getApiKey
+    nameWithType: ApiParent.getApiKey
+    fullName: IDAnalyzer.ApiParent.getApiKey
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+  commentId: M:IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+  parent: IDAnalyzer.ApiParent
+  isExternal: true
+  name: setParam(String, Object)
+  nameWithType: ApiParent.setParam(String, Object)
+  fullName: IDAnalyzer.ApiParent.setParam(System.String, System.Object)
+  spec.csharp:
+  - uid: IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+    name: setParam
+    nameWithType: ApiParent.setParam
+    fullName: IDAnalyzer.ApiParent.setParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+    name: setParam
+    nameWithType: ApiParent.setParam
+    fullName: IDAnalyzer.ApiParent.setParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  commentId: M:IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  parent: IDAnalyzer.ApiParent
+  isExternal: true
+  name: throwApiException(Boolean)
+  nameWithType: ApiParent.throwApiException(Boolean)
+  fullName: IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  spec.csharp:
+  - uid: IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+    name: throwApiException
+    nameWithType: ApiParent.throwApiException
+    fullName: IDAnalyzer.ApiParent.throwApiException
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+    name: throwApiException
+    nameWithType: ApiParent.throwApiException
+    fullName: IDAnalyzer.ApiParent.throwApiException
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: IDAnalyzer.Contract.#ctor*
+  commentId: Overload:IDAnalyzer.Contract.#ctor
+  name: Contract
+  nameWithType: Contract.Contract
+  fullName: IDAnalyzer.Contract.Contract
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: IDAnalyzer.InvalidArgumentException
+  commentId: T:IDAnalyzer.InvalidArgumentException
+  name: InvalidArgumentException
+  nameWithType: InvalidArgumentException
+  fullName: IDAnalyzer.InvalidArgumentException
+- uid: IDAnalyzer.Contract.generate*
+  commentId: Overload:IDAnalyzer.Contract.generate
+  name: generate
+  nameWithType: Contract.generate
+  fullName: IDAnalyzer.Contract.generate
+- uid: System.Collections.Hashtable
+  commentId: T:System.Collections.Hashtable
+  parent: System.Collections
+  isExternal: true
+  name: Hashtable
+  nameWithType: Hashtable
+  fullName: System.Collections.Hashtable
+- uid: JObject
+  isExternal: true
+  name: JObject
+  nameWithType: JObject
+  fullName: JObject
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+- uid: IDAnalyzer.Contract.listTemplate*
+  commentId: Overload:IDAnalyzer.Contract.listTemplate
+  name: listTemplate
+  nameWithType: Contract.listTemplate
+  fullName: IDAnalyzer.Contract.listTemplate
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: IDAnalyzer.Contract.getTemplate*
+  commentId: Overload:IDAnalyzer.Contract.getTemplate
+  name: getTemplate
+  nameWithType: Contract.getTemplate
+  fullName: IDAnalyzer.Contract.getTemplate
+- uid: IDAnalyzer.Contract.deleteTemplate*
+  commentId: Overload:IDAnalyzer.Contract.deleteTemplate
+  name: deleteTemplate
+  nameWithType: Contract.deleteTemplate
+  fullName: IDAnalyzer.Contract.deleteTemplate
+- uid: IDAnalyzer.Contract.createTemplate*
+  commentId: Overload:IDAnalyzer.Contract.createTemplate
+  name: createTemplate
+  nameWithType: Contract.createTemplate
+  fullName: IDAnalyzer.Contract.createTemplate
+- uid: IDAnalyzer.Contract.updateTemplate*
+  commentId: Overload:IDAnalyzer.Contract.updateTemplate
+  name: updateTemplate
+  nameWithType: Contract.updateTemplate
+  fullName: IDAnalyzer.Contract.updateTemplate

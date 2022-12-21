@@ -1,15 +1,15 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Users/Jeremy/Dropbox/idanalyzer/dotnetsdk/IDAnalyzer/IDAnalyzer",
+  "source_base_path": "C:/Users/Evith/Desktop/Coding/idanalyzerSdk/id-analyzer-v2-dotnet/IDAnalyzer",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/IDAnalyzer.AMLAPI.yml",
+      "source_relative_path": "api/IDAnalyzer.ApiError.yml",
       "output": {
         ".html": {
-          "relative_path": "api/IDAnalyzer.AMLAPI.html",
-          "hash": "trXyB8h4DSR16AEGhHXA2Q=="
+          "relative_path": "api/IDAnalyzer.ApiError.html",
+          "hash": "ELlM8XVJnul39X8FGrJGPb0Jqj32Wrrp1snvoChPpEo="
         }
       },
       "is_incremental": false,
@@ -17,11 +17,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/IDAnalyzer.APIException.yml",
+      "source_relative_path": "api/IDAnalyzer.ApiParent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/IDAnalyzer.APIException.html",
-          "hash": "JWEH3h7XgEe0QugdjOq2OQ=="
+          "relative_path": "api/IDAnalyzer.ApiParent.html",
+          "hash": "ZzHss5j7p9K4rSXRFSXpkbhRMN9SKd+O8LeA2ydkF8k="
         }
       },
       "is_incremental": false,
@@ -29,11 +29,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/IDAnalyzer.CoreAPI.yml",
+      "source_relative_path": "api/IDAnalyzer.Biometric.yml",
       "output": {
         ".html": {
-          "relative_path": "api/IDAnalyzer.CoreAPI.html",
-          "hash": "eWuYXlNJiFbkKun8+1CCwg=="
+          "relative_path": "api/IDAnalyzer.Biometric.html",
+          "hash": "GTQuGqAoN/1yTuaUUhjOZMYjIjUOaM19TLjzzT1HbAQ="
         }
       },
       "is_incremental": false,
@@ -41,11 +41,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/IDAnalyzer.DocuPass.yml",
+      "source_relative_path": "api/IDAnalyzer.Common.yml",
       "output": {
         ".html": {
-          "relative_path": "api/IDAnalyzer.DocuPass.html",
-          "hash": "qHIRQL7numziHhCZVt7f0A=="
+          "relative_path": "api/IDAnalyzer.Common.html",
+          "hash": "TaE/mxrTfoiEaoEutanMQVmhmuJK92iYSbX+9hUvM4s="
         }
       },
       "is_incremental": false,
@@ -53,11 +53,71 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/IDAnalyzer.Vault.yml",
+      "source_relative_path": "api/IDAnalyzer.Contract.yml",
       "output": {
         ".html": {
-          "relative_path": "api/IDAnalyzer.Vault.html",
-          "hash": "gEDmggDwaIH8srmk+xQYrw=="
+          "relative_path": "api/IDAnalyzer.Contract.html",
+          "hash": "iptYv3q+GUf3q5AMSprFCvJa4EeztUGdATdE+AMDg/c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IDAnalyzer.Docupass.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IDAnalyzer.Docupass.html",
+          "hash": "cmqvei0Zmcukdt4jUpR/ks/Iv9uYr6pM0D00vkj3F7Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IDAnalyzer.InvalidArgumentException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IDAnalyzer.InvalidArgumentException.html",
+          "hash": "QijRPoSndWyobPlGXSw1Pe1veajNiiAJ/V/PNefkEq8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IDAnalyzer.Profile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IDAnalyzer.Profile.html",
+          "hash": "qS6njWG0hC1kqxeHaT8QQSEBW/7/TwLuW9G+hw8/hEI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IDAnalyzer.Scanner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IDAnalyzer.Scanner.html",
+          "hash": "LWmA4O0Oc+raoV+9IuWlyVo04cewMnxcSLCn1i9Ccys="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/IDAnalyzer.Transaction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/IDAnalyzer.Transaction.html",
+          "hash": "W6dfC26SseRcekC7WhuvIHc+s1NvlUQBaOeG0XjWCdE="
         }
       },
       "is_incremental": false,
@@ -69,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/IDAnalyzer.html",
-          "hash": "wwPop5YUppSewihVSBD21g=="
+          "hash": "ff8pkesTd2Nkfszcn+ZJBF4SC4dmvteQDvvHDqNfugk="
         }
       },
       "is_incremental": false,
@@ -81,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "n3UpKU7udaRua25SgP30UA=="
+          "hash": "qfo70EZpCKOB88fHDduVsah8vpnPT76VeXO8Ps8jxrA="
         }
       },
       "is_incremental": false,
@@ -93,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "qIaGsYnTLOIXqvTJ7HvLXA=="
+          "hash": "DSL/dKyo3ED1lV8KlfhA65JH5ugdvMPfkbw4a0GN4Kc="
         }
       },
       "is_incremental": false,
@@ -105,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "TyG6RBe+gjvM968ZipmheQ=="
+          "hash": "0xK2pqyXgHDmw7sVYe+AW7wsoidx+Vd2+hfQvgSHLoo="
         }
       },
       "is_incremental": false,
@@ -117,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/toc.html",
-          "hash": "gB8AESyvNru97tzIZofEEg=="
+          "hash": "BlPxk5mtl2kgfcZUgkEguqiSAR/EUyUTT4EdebwkQvs="
         }
       },
       "is_incremental": false,
@@ -129,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "lQU0joiWunOHhwWb1A63sg=="
+          "hash": "5e4zLpog0+i2dwvnT8baYdylXO6zD7+whYcpQzxHuvI="
         }
       },
       "is_incremental": false,
@@ -141,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "+rHUkRZHZRi5gd1aTU6lJA=="
+          "hash": "WSuRrYiGwKKMbtdG9z8W9fXmLoCyTnGg9AxbPKLXm2Y="
         }
       },
       "is_incremental": false,
@@ -152,11 +212,11 @@
     {
       "status": {
         "can_incremental": false,
-        "details": "Disable incremental build by force rebuild option.",
+        "details": "Cannot build incrementally because last build info is missing.",
         "incrementalPhase": "build",
         "total_file_count": 0,
         "skipped_file_count": 0,
-        "full_build_reason_code": "ForceRebuild"
+        "full_build_reason_code": "NoAvailableBuildCache"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
@@ -168,7 +228,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 6,
+          "total_file_count": 11,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
@@ -183,7 +243,7 @@
     {
       "status": {
         "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

@@ -1,0 +1,522 @@
+### YamlMime:ManagedReference
+items:
+- uid: IDAnalyzer.Common
+  commentId: T:IDAnalyzer.Common
+  id: Common
+  parent: IDAnalyzer
+  children:
+  - IDAnalyzer.Common.ApiExceptionHandle(System.Net.Http.HttpResponseMessage,System.Boolean)
+  - IDAnalyzer.Common.GetEndpoint(System.String,System.Collections.Hashtable)
+  - IDAnalyzer.Common.ParseInput(System.String,System.Boolean)
+  langs:
+  - csharp
+  - vb
+  name: Common
+  nameWithType: Common
+  fullName: IDAnalyzer.Common
+  type: Class
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: Common
+    path: IDAnalyzer.cs
+    startLine: 14
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: public class Common
+    content.vb: Public Class Common
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: IDAnalyzer.Common.ParseInput(System.String,System.Boolean)
+  commentId: M:IDAnalyzer.Common.ParseInput(System.String,System.Boolean)
+  id: ParseInput(System.String,System.Boolean)
+  parent: IDAnalyzer.Common
+  langs:
+  - csharp
+  - vb
+  name: ParseInput(String, Boolean)
+  nameWithType: Common.ParseInput(String, Boolean)
+  fullName: IDAnalyzer.Common.ParseInput(System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: ParseInput
+    path: IDAnalyzer.cs
+    startLine: 16
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: public static string ParseInput(string str, bool allowCache = false)
+    parameters:
+    - id: str
+      type: System.String
+    - id: allowCache
+      type: System.Boolean
+    return:
+      type: System.String
+    content.vb: Public Shared Function ParseInput(str As String, allowCache As Boolean = False) As String
+  overload: IDAnalyzer.Common.ParseInput*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: IDAnalyzer.Common.GetEndpoint(System.String,System.Collections.Hashtable)
+  commentId: M:IDAnalyzer.Common.GetEndpoint(System.String,System.Collections.Hashtable)
+  id: GetEndpoint(System.String,System.Collections.Hashtable)
+  parent: IDAnalyzer.Common
+  langs:
+  - csharp
+  - vb
+  name: GetEndpoint(String, Hashtable)
+  nameWithType: Common.GetEndpoint(String, Hashtable)
+  fullName: IDAnalyzer.Common.GetEndpoint(System.String, System.Collections.Hashtable)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: GetEndpoint
+    path: IDAnalyzer.cs
+    startLine: 46
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: public static string GetEndpoint(string uri, Hashtable parameters = null)
+    parameters:
+    - id: uri
+      type: System.String
+    - id: parameters
+      type: System.Collections.Hashtable
+    return:
+      type: System.String
+    content.vb: Public Shared Function GetEndpoint(uri As String, parameters As Hashtable = Nothing) As String
+  overload: IDAnalyzer.Common.GetEndpoint*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: IDAnalyzer.Common.ApiExceptionHandle(System.Net.Http.HttpResponseMessage,System.Boolean)
+  commentId: M:IDAnalyzer.Common.ApiExceptionHandle(System.Net.Http.HttpResponseMessage,System.Boolean)
+  id: ApiExceptionHandle(System.Net.Http.HttpResponseMessage,System.Boolean)
+  parent: IDAnalyzer.Common
+  langs:
+  - csharp
+  - vb
+  name: ApiExceptionHandle(HttpResponseMessage, Boolean)
+  nameWithType: Common.ApiExceptionHandle(HttpResponseMessage, Boolean)
+  fullName: IDAnalyzer.Common.ApiExceptionHandle(System.Net.Http.HttpResponseMessage, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: ApiExceptionHandle
+    path: IDAnalyzer.cs
+    startLine: 76
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: public static JObject ApiExceptionHandle(HttpResponseMessage resp, bool throwError)
+    parameters:
+    - id: resp
+      type: System.Net.Http.HttpResponseMessage
+    - id: throwError
+      type: System.Boolean
+    return:
+      type: JObject
+    content.vb: Public Shared Function ApiExceptionHandle(resp As HttpResponseMessage, throwError As Boolean) As JObject
+  overload: IDAnalyzer.Common.ApiExceptionHandle*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: IDAnalyzer
+  commentId: N:IDAnalyzer
+  name: IDAnalyzer
+  nameWithType: IDAnalyzer
+  fullName: IDAnalyzer
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: IDAnalyzer.Common.ParseInput*
+  commentId: Overload:IDAnalyzer.Common.ParseInput
+  name: ParseInput
+  nameWithType: Common.ParseInput
+  fullName: IDAnalyzer.Common.ParseInput
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: IDAnalyzer.Common.GetEndpoint*
+  commentId: Overload:IDAnalyzer.Common.GetEndpoint
+  name: GetEndpoint
+  nameWithType: Common.GetEndpoint
+  fullName: IDAnalyzer.Common.GetEndpoint
+- uid: System.Collections.Hashtable
+  commentId: T:System.Collections.Hashtable
+  parent: System.Collections
+  isExternal: true
+  name: Hashtable
+  nameWithType: Hashtable
+  fullName: System.Collections.Hashtable
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+- uid: IDAnalyzer.Common.ApiExceptionHandle*
+  commentId: Overload:IDAnalyzer.Common.ApiExceptionHandle
+  name: ApiExceptionHandle
+  nameWithType: Common.ApiExceptionHandle
+  fullName: IDAnalyzer.Common.ApiExceptionHandle
+- uid: System.Net.Http.HttpResponseMessage
+  commentId: T:System.Net.Http.HttpResponseMessage
+  parent: System.Net.Http
+  isExternal: true
+  name: HttpResponseMessage
+  nameWithType: HttpResponseMessage
+  fullName: System.Net.Http.HttpResponseMessage
+- uid: JObject
+  isExternal: true
+  name: JObject
+  nameWithType: JObject
+  fullName: JObject
+- uid: System.Net.Http
+  commentId: N:System.Net.Http
+  isExternal: true
+  name: System.Net.Http
+  nameWithType: System.Net.Http
+  fullName: System.Net.Http

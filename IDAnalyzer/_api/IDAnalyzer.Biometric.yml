@@ -1,0 +1,770 @@
+### YamlMime:ManagedReference
+items:
+- uid: IDAnalyzer.Biometric
+  commentId: T:IDAnalyzer.Biometric
+  id: Biometric
+  parent: IDAnalyzer
+  children:
+  - IDAnalyzer.Biometric.#ctor(System.String)
+  - IDAnalyzer.Biometric.setCustomData(System.String)
+  - IDAnalyzer.Biometric.setProfile(System.Object)
+  - IDAnalyzer.Biometric.verifyFace(System.String,System.String,System.String)
+  - IDAnalyzer.Biometric.verifyLiveness(System.String,System.String)
+  langs:
+  - csharp
+  - vb
+  name: Biometric
+  nameWithType: Biometric
+  fullName: IDAnalyzer.Biometric
+  type: Class
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: Biometric
+    path: IDAnalyzer.cs
+    startLine: 434
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: 'public class Biometric : ApiParent'
+    content.vb: >-
+      Public Class Biometric
+          Inherits ApiParent
+  inheritance:
+  - System.Object
+  - IDAnalyzer.ApiParent
+  inheritedMembers:
+  - IDAnalyzer.ApiParent.apiKey
+  - IDAnalyzer.ApiParent.client_lib
+  - IDAnalyzer.ApiParent.config
+  - IDAnalyzer.ApiParent.throwError
+  - IDAnalyzer.ApiParent.sess
+  - IDAnalyzer.ApiParent.getApiKey(System.String)
+  - IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+  - IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: IDAnalyzer.Biometric.#ctor(System.String)
+  commentId: M:IDAnalyzer.Biometric.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: IDAnalyzer.Biometric
+  langs:
+  - csharp
+  - vb
+  name: Biometric(String)
+  nameWithType: Biometric.Biometric(String)
+  fullName: IDAnalyzer.Biometric.Biometric(System.String)
+  type: Constructor
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: .ctor
+    path: IDAnalyzer.cs
+    startLine: 436
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: public Biometric(string apiKey = null)
+    parameters:
+    - id: apiKey
+      type: System.String
+    content.vb: Public Sub New(apiKey As String = Nothing)
+  overload: IDAnalyzer.Biometric.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Biometric.setCustomData(System.String)
+  commentId: M:IDAnalyzer.Biometric.setCustomData(System.String)
+  id: setCustomData(System.String)
+  parent: IDAnalyzer.Biometric
+  langs:
+  - csharp
+  - vb
+  name: setCustomData(String)
+  nameWithType: Biometric.setCustomData(String)
+  fullName: IDAnalyzer.Biometric.setCustomData(System.String)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: setCustomData
+    path: IDAnalyzer.cs
+    startLine: 447
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nSet an arbitrary string you wish to save with the transaction. e.g Internal customer reference number\n"
+  example: []
+  syntax:
+    content: public void setCustomData(string customData)
+    parameters:
+    - id: customData
+      type: System.String
+      description: ''
+    content.vb: Public Sub setCustomData(customData As String)
+  overload: IDAnalyzer.Biometric.setCustomData*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Biometric.setProfile(System.Object)
+  commentId: M:IDAnalyzer.Biometric.setProfile(System.Object)
+  id: setProfile(System.Object)
+  parent: IDAnalyzer.Biometric
+  langs:
+  - csharp
+  - vb
+  name: setProfile(Object)
+  nameWithType: Biometric.setProfile(Object)
+  fullName: IDAnalyzer.Biometric.setProfile(System.Object)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: setProfile
+    path: IDAnalyzer.cs
+    startLine: 457
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nSet KYC Profile\n"
+  example: []
+  syntax:
+    content: public void setProfile(object profile)
+    parameters:
+    - id: profile
+      type: System.Object
+      description: KYCProfile object
+    content.vb: Public Sub setProfile(profile As Object)
+  overload: IDAnalyzer.Biometric.setProfile*
+  exceptions:
+  - type: IDAnalyzer.InvalidArgumentException
+    commentId: T:IDAnalyzer.InvalidArgumentException
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Biometric.verifyFace(System.String,System.String,System.String)
+  commentId: M:IDAnalyzer.Biometric.verifyFace(System.String,System.String,System.String)
+  id: verifyFace(System.String,System.String,System.String)
+  parent: IDAnalyzer.Biometric
+  langs:
+  - csharp
+  - vb
+  name: verifyFace(String, String, String)
+  nameWithType: Biometric.verifyFace(String, String, String)
+  fullName: IDAnalyzer.Biometric.verifyFace(System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: verifyFace
+    path: IDAnalyzer.cs
+    startLine: 486
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nPerform 1:1 face verification using selfie photo or selfie video, against a reference face image.\n"
+  example: []
+  syntax:
+    content: public JObject verifyFace(string referenceFaceImage, string facePhoto, string faceVideo = "")
+    parameters:
+    - id: referenceFaceImage
+      type: System.String
+      description: Front of Document (file path, base64 content, url, or cache reference)
+    - id: facePhoto
+      type: System.String
+      description: Face Photo (file path, base64 content or URL, or cache reference)
+    - id: faceVideo
+      type: System.String
+      description: Face Video (file path, base64 content or URL)
+    return:
+      type: JObject
+      description: ''
+    content.vb: Public Function verifyFace(referenceFaceImage As String, facePhoto As String, faceVideo As String = "") As JObject
+  overload: IDAnalyzer.Biometric.verifyFace*
+  exceptions:
+  - type: IDAnalyzer.InvalidArgumentException
+    commentId: T:IDAnalyzer.InvalidArgumentException
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Biometric.verifyLiveness(System.String,System.String)
+  commentId: M:IDAnalyzer.Biometric.verifyLiveness(System.String,System.String)
+  id: verifyLiveness(System.String,System.String)
+  parent: IDAnalyzer.Biometric
+  langs:
+  - csharp
+  - vb
+  name: verifyLiveness(String, String)
+  nameWithType: Biometric.verifyLiveness(String, String)
+  fullName: IDAnalyzer.Biometric.verifyLiveness(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: verifyLiveness
+    path: IDAnalyzer.cs
+    startLine: 524
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nPerform standalone liveness check on a selfie photo or video.\n"
+  example: []
+  syntax:
+    content: public JObject verifyLiveness(string facePhoto = "", string faceVideo = "")
+    parameters:
+    - id: facePhoto
+      type: System.String
+      description: Face Photo (file path, base64 content or URL, or cache reference)
+    - id: faceVideo
+      type: System.String
+      description: Face Video (file path, base64 content or URL)
+    return:
+      type: JObject
+      description: ''
+    content.vb: Public Function verifyLiveness(facePhoto As String = "", faceVideo As String = "") As JObject
+  overload: IDAnalyzer.Biometric.verifyLiveness*
+  exceptions:
+  - type: IDAnalyzer.InvalidArgumentException
+    commentId: T:IDAnalyzer.InvalidArgumentException
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: IDAnalyzer
+  commentId: N:IDAnalyzer
+  name: IDAnalyzer
+  nameWithType: IDAnalyzer
+  fullName: IDAnalyzer
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: IDAnalyzer.ApiParent
+  commentId: T:IDAnalyzer.ApiParent
+  parent: IDAnalyzer
+  name: ApiParent
+  nameWithType: ApiParent
+  fullName: IDAnalyzer.ApiParent
+- uid: IDAnalyzer.ApiParent.apiKey
+  commentId: F:IDAnalyzer.ApiParent.apiKey
+  parent: IDAnalyzer.ApiParent
+  name: apiKey
+  nameWithType: ApiParent.apiKey
+  fullName: IDAnalyzer.ApiParent.apiKey
+- uid: IDAnalyzer.ApiParent.client_lib
+  commentId: F:IDAnalyzer.ApiParent.client_lib
+  parent: IDAnalyzer.ApiParent
+  name: client_lib
+  nameWithType: ApiParent.client_lib
+  fullName: IDAnalyzer.ApiParent.client_lib
+- uid: IDAnalyzer.ApiParent.config
+  commentId: F:IDAnalyzer.ApiParent.config
+  parent: IDAnalyzer.ApiParent
+  name: config
+  nameWithType: ApiParent.config
+  fullName: IDAnalyzer.ApiParent.config
+- uid: IDAnalyzer.ApiParent.throwError
+  commentId: F:IDAnalyzer.ApiParent.throwError
+  parent: IDAnalyzer.ApiParent
+  name: throwError
+  nameWithType: ApiParent.throwError
+  fullName: IDAnalyzer.ApiParent.throwError
+- uid: IDAnalyzer.ApiParent.sess
+  commentId: F:IDAnalyzer.ApiParent.sess
+  parent: IDAnalyzer.ApiParent
+  name: sess
+  nameWithType: ApiParent.sess
+  fullName: IDAnalyzer.ApiParent.sess
+- uid: IDAnalyzer.ApiParent.getApiKey(System.String)
+  commentId: M:IDAnalyzer.ApiParent.getApiKey(System.String)
+  parent: IDAnalyzer.ApiParent
+  isExternal: true
+  name: getApiKey(String)
+  nameWithType: ApiParent.getApiKey(String)
+  fullName: IDAnalyzer.ApiParent.getApiKey(System.String)
+  spec.csharp:
+  - uid: IDAnalyzer.ApiParent.getApiKey(System.String)
+    name: getApiKey
+    nameWithType: ApiParent.getApiKey
+    fullName: IDAnalyzer.ApiParent.getApiKey
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: IDAnalyzer.ApiParent.getApiKey(System.String)
+    name: getApiKey
+    nameWithType: ApiParent.getApiKey
+    fullName: IDAnalyzer.ApiParent.getApiKey
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+  commentId: M:IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+  parent: IDAnalyzer.ApiParent
+  isExternal: true
+  name: setParam(String, Object)
+  nameWithType: ApiParent.setParam(String, Object)
+  fullName: IDAnalyzer.ApiParent.setParam(System.String, System.Object)
+  spec.csharp:
+  - uid: IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+    name: setParam
+    nameWithType: ApiParent.setParam
+    fullName: IDAnalyzer.ApiParent.setParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+    name: setParam
+    nameWithType: ApiParent.setParam
+    fullName: IDAnalyzer.ApiParent.setParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  commentId: M:IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  parent: IDAnalyzer.ApiParent
+  isExternal: true
+  name: throwApiException(Boolean)
+  nameWithType: ApiParent.throwApiException(Boolean)
+  fullName: IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  spec.csharp:
+  - uid: IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+    name: throwApiException
+    nameWithType: ApiParent.throwApiException
+    fullName: IDAnalyzer.ApiParent.throwApiException
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+    name: throwApiException
+    nameWithType: ApiParent.throwApiException
+    fullName: IDAnalyzer.ApiParent.throwApiException
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: IDAnalyzer.Biometric.#ctor*
+  commentId: Overload:IDAnalyzer.Biometric.#ctor
+  name: Biometric
+  nameWithType: Biometric.Biometric
+  fullName: IDAnalyzer.Biometric.Biometric
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: IDAnalyzer.Biometric.setCustomData*
+  commentId: Overload:IDAnalyzer.Biometric.setCustomData
+  name: setCustomData
+  nameWithType: Biometric.setCustomData
+  fullName: IDAnalyzer.Biometric.setCustomData
+- uid: IDAnalyzer.InvalidArgumentException
+  commentId: T:IDAnalyzer.InvalidArgumentException
+  name: InvalidArgumentException
+  nameWithType: InvalidArgumentException
+  fullName: IDAnalyzer.InvalidArgumentException
+- uid: IDAnalyzer.Biometric.setProfile*
+  commentId: Overload:IDAnalyzer.Biometric.setProfile
+  name: setProfile
+  nameWithType: Biometric.setProfile
+  fullName: IDAnalyzer.Biometric.setProfile
+- uid: IDAnalyzer.Biometric.verifyFace*
+  commentId: Overload:IDAnalyzer.Biometric.verifyFace
+  name: verifyFace
+  nameWithType: Biometric.verifyFace
+  fullName: IDAnalyzer.Biometric.verifyFace
+- uid: JObject
+  isExternal: true
+  name: JObject
+  nameWithType: JObject
+  fullName: JObject
+- uid: IDAnalyzer.Biometric.verifyLiveness*
+  commentId: Overload:IDAnalyzer.Biometric.verifyLiveness
+  name: verifyLiveness
+  nameWithType: Biometric.verifyLiveness
+  fullName: IDAnalyzer.Biometric.verifyLiveness

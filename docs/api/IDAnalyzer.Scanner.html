@@ -1,0 +1,696 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Scanner
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Scanner
+   ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="IDAnalyzer.Scanner">
+  
+  
+  <h1 id="IDAnalyzer_Scanner" data-uid="IDAnalyzer.Scanner" class="text-break">Class Scanner
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="IDAnalyzer.ApiParent.html">ApiParent</a></div>
+    <div class="level2"><span class="xref">Scanner</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="IDAnalyzer.ApiParent.html#IDAnalyzer_ApiParent_apiKey">ApiParent.apiKey</a>
+    </div>
+    <div>
+      <a class="xref" href="IDAnalyzer.ApiParent.html#IDAnalyzer_ApiParent_client_lib">ApiParent.client_lib</a>
+    </div>
+    <div>
+      <a class="xref" href="IDAnalyzer.ApiParent.html#IDAnalyzer_ApiParent_config">ApiParent.config</a>
+    </div>
+    <div>
+      <a class="xref" href="IDAnalyzer.ApiParent.html#IDAnalyzer_ApiParent_throwError">ApiParent.throwError</a>
+    </div>
+    <div>
+      <a class="xref" href="IDAnalyzer.ApiParent.html#IDAnalyzer_ApiParent_sess">ApiParent.sess</a>
+    </div>
+    <div>
+      <a class="xref" href="IDAnalyzer.ApiParent.html#IDAnalyzer_ApiParent_getApiKey_System_String_">ApiParent.getApiKey(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="IDAnalyzer.ApiParent.html#IDAnalyzer_ApiParent_setParam_System_String_System_Object_">ApiParent.setParam(String, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="IDAnalyzer.ApiParent.html#IDAnalyzer_ApiParent_throwApiException_System_Boolean_">ApiParent.throwApiException(Boolean)</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="IDAnalyzer.html">IDAnalyzer</a></h6>
+  <h6><strong>Assembly</strong>: IDAnalyzer.dll</h6>
+  <h5 id="IDAnalyzer_Scanner_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Scanner : ApiParent</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/new/main/apiSpec/new?filename=IDAnalyzer_Scanner__ctor_System_String_.md&amp;value=---%0Auid%3A%20IDAnalyzer.Scanner.%23ctor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/blob/main/IDAnalyzer/IDAnalyzer.cs/#L756">View Source</a>
+  </span>
+  <a id="IDAnalyzer_Scanner__ctor_" data-uid="IDAnalyzer.Scanner.#ctor*"></a>
+  <h4 id="IDAnalyzer_Scanner__ctor_System_String_" data-uid="IDAnalyzer.Scanner.#ctor(System.String)">Scanner(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Scanner(string apiKey = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">apiKey</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/new/main/apiSpec/new?filename=IDAnalyzer_Scanner_quickScan_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20IDAnalyzer.Scanner.quickScan(System.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/blob/main/IDAnalyzer/IDAnalyzer.cs/#L985">View Source</a>
+  </span>
+  <a id="IDAnalyzer_Scanner_quickScan_" data-uid="IDAnalyzer.Scanner.quickScan*"></a>
+  <h4 id="IDAnalyzer_Scanner_quickScan_System_String_System_String_System_Boolean_" data-uid="IDAnalyzer.Scanner.quickScan(System.String,System.String,System.Boolean)">quickScan(String, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Initiate a quick identity document OCR scan by providing input images.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public JObject quickScan(string documentFront = &quot;&quot;, string documentBack = &quot;&quot;, bool cacheImage = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">documentFront</span></td>
+        <td><p>Front of Document (file path, base64 content or URL)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">documentBack</span></td>
+        <td><p>Back of Document (file path, base64 content or URL)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">cacheImage</span></td>
+        <td><p>Cache uploaded image(s) for 24 hours and obtain a cache reference for each image, the reference hash can be used to start standard scan transaction without re-uploading the file.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">JObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IDAnalyzer.InvalidArgumentException.html">InvalidArgumentException</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/new/main/apiSpec/new?filename=IDAnalyzer_Scanner_restrictCountry_System_String_.md&amp;value=---%0Auid%3A%20IDAnalyzer.Scanner.restrictCountry(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/blob/main/IDAnalyzer/IDAnalyzer.cs/#L910">View Source</a>
+  </span>
+  <a id="IDAnalyzer_Scanner_restrictCountry_" data-uid="IDAnalyzer.Scanner.restrictCountry*"></a>
+  <h4 id="IDAnalyzer_Scanner_restrictCountry_System_String_" data-uid="IDAnalyzer.Scanner.restrictCountry(System.String)">restrictCountry(String)</h4>
+  <div class="markdown level1 summary"><p>Check if the document was issued by specified countries. Separate multiple values with comma. For example &quot;US,CA&quot; would accept documents from the United States and Canada.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void restrictCountry(string countryCodes = &quot;US,CA,UK&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">countryCodes</span></td>
+        <td><p>ISO ALPHA-2 Country Code separated by comma</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/new/main/apiSpec/new?filename=IDAnalyzer_Scanner_restrictState_System_String_.md&amp;value=---%0Auid%3A%20IDAnalyzer.Scanner.restrictState(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/blob/main/IDAnalyzer/IDAnalyzer.cs/#L919">View Source</a>
+  </span>
+  <a id="IDAnalyzer_Scanner_restrictState_" data-uid="IDAnalyzer.Scanner.restrictState*"></a>
+  <h4 id="IDAnalyzer_Scanner_restrictState_System_String_" data-uid="IDAnalyzer.Scanner.restrictState(System.String)">restrictState(String)</h4>
+  <div class="markdown level1 summary"><p>Check if the document was issued by specified state. Separate multiple values with comma. For example &quot;CA,TX&quot; would accept documents from California and Texas.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void restrictState(string states = &quot;CA,TX&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">states</span></td>
+        <td><p>State full name or abbreviation separated by comma</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/new/main/apiSpec/new?filename=IDAnalyzer_Scanner_restrictType_System_String_.md&amp;value=---%0Auid%3A%20IDAnalyzer.Scanner.restrictType(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/blob/main/IDAnalyzer/IDAnalyzer.cs/#L928">View Source</a>
+  </span>
+  <a id="IDAnalyzer_Scanner_restrictType_" data-uid="IDAnalyzer.Scanner.restrictType*"></a>
+  <h4 id="IDAnalyzer_Scanner_restrictType_System_String_" data-uid="IDAnalyzer.Scanner.restrictType(System.String)">restrictType(String)</h4>
+  <div class="markdown level1 summary"><p>Check if the document was one of the specified types. For example, &quot;PD&quot; would accept both passport and driver license.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void restrictType(string documentType = &quot;DIP&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">documentType</span></td>
+        <td><p>P: Passport, D: Driver's License, I: Identity Card</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/new/main/apiSpec/new?filename=IDAnalyzer_Scanner_scan_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20IDAnalyzer.Scanner.scan(System.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/blob/main/IDAnalyzer/IDAnalyzer.cs/#L942">View Source</a>
+  </span>
+  <a id="IDAnalyzer_Scanner_scan_" data-uid="IDAnalyzer.Scanner.scan*"></a>
+  <h4 id="IDAnalyzer_Scanner_scan_System_String_System_String_System_String_System_String_" data-uid="IDAnalyzer.Scanner.scan(System.String,System.String,System.String,System.String)">scan(String, String, String, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public JObject scan(string documentFront = &quot;&quot;, string documentBack = &quot;&quot;, string facePhoto = &quot;&quot;, string faceVideo = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">documentFront</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">documentBack</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">facePhoto</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">faceVideo</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">JObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/new/main/apiSpec/new?filename=IDAnalyzer_Scanner_setContractOptions_System_String_System_String_System_Collections_Hashtable_.md&amp;value=---%0Auid%3A%20IDAnalyzer.Scanner.setContractOptions(System.String%2CSystem.String%2CSystem.Collections.Hashtable)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/blob/main/IDAnalyzer/IDAnalyzer.cs/#L801">View Source</a>
+  </span>
+  <a id="IDAnalyzer_Scanner_setContractOptions_" data-uid="IDAnalyzer.Scanner.setContractOptions*"></a>
+  <h4 id="IDAnalyzer_Scanner_setContractOptions_System_String_System_String_System_Collections_Hashtable_" data-uid="IDAnalyzer.Scanner.setContractOptions(System.String,System.String,System.Collections.Hashtable)">setContractOptions(String, String, Hashtable)</h4>
+  <div class="markdown level1 summary"><p>Automatically generate contract document using value parsed from uploaded ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setContractOptions(string templateId = &quot;&quot;, string _format = &quot;PDF&quot;, Hashtable extraFillData = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">templateId</span></td>
+        <td><p>Enter up to 5 contract template ID (seperated by comma)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">_format</span></td>
+        <td><p>PDF, DOCX or HTML</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Hashtable</span></td>
+        <td><span class="parametername">extraFillData</span></td>
+        <td><p>Array data in key-value pairs to autofill dynamic fields, data from user ID will be used first in case of a conflict. For example, passing {&quot;myparameter&quot;:&quot;abc&quot;} would fill %{myparameter} in contract template with &quot;abc&quot;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/new/main/apiSpec/new?filename=IDAnalyzer_Scanner_setCustomData_System_String_.md&amp;value=---%0Auid%3A%20IDAnalyzer.Scanner.setCustomData(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/blob/main/IDAnalyzer/IDAnalyzer.cs/#L790">View Source</a>
+  </span>
+  <a id="IDAnalyzer_Scanner_setCustomData_" data-uid="IDAnalyzer.Scanner.setCustomData*"></a>
+  <h4 id="IDAnalyzer_Scanner_setCustomData_System_String_" data-uid="IDAnalyzer.Scanner.setCustomData(System.String)">setCustomData(String)</h4>
+  <div class="markdown level1 summary"><p>Set an arbitrary string you wish to save with the transaction. e.g Internal customer reference number</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setCustomData(string customData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">customData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/new/main/apiSpec/new?filename=IDAnalyzer_Scanner_setProfile_System_Object_.md&amp;value=---%0Auid%3A%20IDAnalyzer.Scanner.setProfile(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/blob/main/IDAnalyzer/IDAnalyzer.cs/#L834">View Source</a>
+  </span>
+  <a id="IDAnalyzer_Scanner_setProfile_" data-uid="IDAnalyzer.Scanner.setProfile*"></a>
+  <h4 id="IDAnalyzer_Scanner_setProfile_System_Object_" data-uid="IDAnalyzer.Scanner.setProfile(System.Object)">setProfile(Object)</h4>
+  <div class="markdown level1 summary"><p>Set KYC Profile</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setProfile(object profile)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">profile</span></td>
+        <td><p>KYCProfile object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IDAnalyzer.InvalidArgumentException.html">InvalidArgumentException</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/new/main/apiSpec/new?filename=IDAnalyzer_Scanner_setUserIp_System_String_.md&amp;value=---%0Auid%3A%20IDAnalyzer.Scanner.setUserIp(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/blob/main/IDAnalyzer/IDAnalyzer.cs/#L781">View Source</a>
+  </span>
+  <a id="IDAnalyzer_Scanner_setUserIp_" data-uid="IDAnalyzer.Scanner.setUserIp*"></a>
+  <h4 id="IDAnalyzer_Scanner_setUserIp_System_String_" data-uid="IDAnalyzer.Scanner.setUserIp(System.String)">setUserIp(String)</h4>
+  <div class="markdown level1 summary"><p>Pass in user IP address to check if ID is issued from the same country as the IP address, if no value is provided http connection IP will be used.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void setUserIp(string ip)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">ip</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/new/main/apiSpec/new?filename=IDAnalyzer_Scanner_verifyUserInformation_System_String_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20IDAnalyzer.Scanner.verifyUserInformation(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/blob/main/IDAnalyzer/IDAnalyzer.cs/#L865">View Source</a>
+  </span>
+  <a id="IDAnalyzer_Scanner_verifyUserInformation_" data-uid="IDAnalyzer.Scanner.verifyUserInformation*"></a>
+  <h4 id="IDAnalyzer_Scanner_verifyUserInformation_System_String_System_String_System_String_System_String_System_String_System_String_" data-uid="IDAnalyzer.Scanner.verifyUserInformation(System.String,System.String,System.String,System.String,System.String,System.String)">verifyUserInformation(String, String, String, String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Check if customer information matches with uploaded document</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void verifyUserInformation(string documentNumber = &quot;&quot;, string fullName = &quot;&quot;, string dob = &quot;&quot;, string ageRange = &quot;&quot;, string address = &quot;&quot;, string postcode = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">documentNumber</span></td>
+        <td><p>Document or ID number</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fullName</span></td>
+        <td><p>Full name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">dob</span></td>
+        <td><p>Date of birth in YYYY/MM/DD</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">ageRange</span></td>
+        <td><p>Age range, example: 18-40</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">address</span></td>
+        <td><p>Address</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">postcode</span></td>
+        <td><p>Postcode</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="IDAnalyzer.InvalidArgumentException.html">InvalidArgumentException</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/new/main/apiSpec/new?filename=IDAnalyzer_Scanner.md&amp;value=---%0Auid%3A%20IDAnalyzer.Scanner%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/idanalyzer/id-analyzer-v2-dotnet/blob/main/IDAnalyzer/IDAnalyzer.cs/#L754" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

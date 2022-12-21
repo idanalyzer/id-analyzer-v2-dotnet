@@ -1,0 +1,729 @@
+### YamlMime:ManagedReference
+items:
+- uid: IDAnalyzer.ApiParent
+  commentId: T:IDAnalyzer.ApiParent
+  id: ApiParent
+  parent: IDAnalyzer
+  children:
+  - IDAnalyzer.ApiParent.#ctor(System.String)
+  - IDAnalyzer.ApiParent.apiKey
+  - IDAnalyzer.ApiParent.client_lib
+  - IDAnalyzer.ApiParent.config
+  - IDAnalyzer.ApiParent.getApiKey(System.String)
+  - IDAnalyzer.ApiParent.sess
+  - IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+  - IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  - IDAnalyzer.ApiParent.throwError
+  langs:
+  - csharp
+  - vb
+  name: ApiParent
+  nameWithType: ApiParent
+  fullName: IDAnalyzer.ApiParent
+  type: Class
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: ApiParent
+    path: IDAnalyzer.cs
+    startLine: 87
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: public class ApiParent
+    content.vb: Public Class ApiParent
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - IDAnalyzer.Biometric
+  - IDAnalyzer.Contract
+  - IDAnalyzer.Docupass
+  - IDAnalyzer.Scanner
+  - IDAnalyzer.Transaction
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: IDAnalyzer.ApiParent.apiKey
+  commentId: F:IDAnalyzer.ApiParent.apiKey
+  id: apiKey
+  parent: IDAnalyzer.ApiParent
+  langs:
+  - csharp
+  - vb
+  name: apiKey
+  nameWithType: ApiParent.apiKey
+  fullName: IDAnalyzer.ApiParent.apiKey
+  type: Field
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: apiKey
+    path: IDAnalyzer.cs
+    startLine: 89
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: protected string apiKey
+    return:
+      type: System.String
+    content.vb: Protected apiKey As String
+  modifiers.csharp:
+  - protected
+  modifiers.vb:
+  - Protected
+- uid: IDAnalyzer.ApiParent.client_lib
+  commentId: F:IDAnalyzer.ApiParent.client_lib
+  id: client_lib
+  parent: IDAnalyzer.ApiParent
+  langs:
+  - csharp
+  - vb
+  name: client_lib
+  nameWithType: ApiParent.client_lib
+  fullName: IDAnalyzer.ApiParent.client_lib
+  type: Field
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: client_lib
+    path: IDAnalyzer.cs
+    startLine: 90
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: protected string client_lib
+    return:
+      type: System.String
+    content.vb: Protected client_lib As String
+  modifiers.csharp:
+  - protected
+  modifiers.vb:
+  - Protected
+- uid: IDAnalyzer.ApiParent.config
+  commentId: F:IDAnalyzer.ApiParent.config
+  id: config
+  parent: IDAnalyzer.ApiParent
+  langs:
+  - csharp
+  - vb
+  name: config
+  nameWithType: ApiParent.config
+  fullName: IDAnalyzer.ApiParent.config
+  type: Field
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: config
+    path: IDAnalyzer.cs
+    startLine: 91
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: protected Hashtable config
+    return:
+      type: System.Collections.Hashtable
+    content.vb: Protected config As Hashtable
+  modifiers.csharp:
+  - protected
+  modifiers.vb:
+  - Protected
+- uid: IDAnalyzer.ApiParent.throwError
+  commentId: F:IDAnalyzer.ApiParent.throwError
+  id: throwError
+  parent: IDAnalyzer.ApiParent
+  langs:
+  - csharp
+  - vb
+  name: throwError
+  nameWithType: ApiParent.throwError
+  fullName: IDAnalyzer.ApiParent.throwError
+  type: Field
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: throwError
+    path: IDAnalyzer.cs
+    startLine: 92
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: protected bool throwError
+    return:
+      type: System.Boolean
+    content.vb: Protected throwError As Boolean
+  modifiers.csharp:
+  - protected
+  modifiers.vb:
+  - Protected
+- uid: IDAnalyzer.ApiParent.sess
+  commentId: F:IDAnalyzer.ApiParent.sess
+  id: sess
+  parent: IDAnalyzer.ApiParent
+  langs:
+  - csharp
+  - vb
+  name: sess
+  nameWithType: ApiParent.sess
+  fullName: IDAnalyzer.ApiParent.sess
+  type: Field
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: sess
+    path: IDAnalyzer.cs
+    startLine: 93
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: protected HttpClient sess
+    return:
+      type: System.Net.Http.HttpClient
+    content.vb: Protected sess As HttpClient
+  modifiers.csharp:
+  - protected
+  modifiers.vb:
+  - Protected
+- uid: IDAnalyzer.ApiParent.#ctor(System.String)
+  commentId: M:IDAnalyzer.ApiParent.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: IDAnalyzer.ApiParent
+  langs:
+  - csharp
+  - vb
+  name: ApiParent(String)
+  nameWithType: ApiParent.ApiParent(String)
+  fullName: IDAnalyzer.ApiParent.ApiParent(System.String)
+  type: Constructor
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: .ctor
+    path: IDAnalyzer.cs
+    startLine: 100
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\n\n"
+  example: []
+  syntax:
+    content: public ApiParent(string apiKey = null)
+    parameters:
+    - id: apiKey
+      type: System.String
+      description: You API key
+    content.vb: Public Sub New(apiKey As String = Nothing)
+  overload: IDAnalyzer.ApiParent.#ctor*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Please set API key via environment variable &apos;IDANALYZER_KEY&apos;
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.ApiParent.getApiKey(System.String)
+  commentId: M:IDAnalyzer.ApiParent.getApiKey(System.String)
+  id: getApiKey(System.String)
+  parent: IDAnalyzer.ApiParent
+  langs:
+  - csharp
+  - vb
+  name: getApiKey(String)
+  nameWithType: ApiParent.getApiKey(String)
+  fullName: IDAnalyzer.ApiParent.getApiKey(System.String)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: getApiKey
+    path: IDAnalyzer.cs
+    startLine: 112
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: protected string getApiKey(string apiKey = null)
+    parameters:
+    - id: apiKey
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Protected Function getApiKey(apiKey As String = Nothing) As String
+  overload: IDAnalyzer.ApiParent.getApiKey*
+  modifiers.csharp:
+  - protected
+  modifiers.vb:
+  - Protected
+- uid: IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+  commentId: M:IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+  id: setParam(System.String,System.Object)
+  parent: IDAnalyzer.ApiParent
+  langs:
+  - csharp
+  - vb
+  name: setParam(String, Object)
+  nameWithType: ApiParent.setParam(String, Object)
+  fullName: IDAnalyzer.ApiParent.setParam(System.String, System.Object)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: setParam
+    path: IDAnalyzer.cs
+    startLine: 122
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nSet an API parameter and its value, this function allows you to set any API parameter without using the built-in functions\n"
+  example: []
+  syntax:
+    content: public void setParam(string key, object value)
+    parameters:
+    - id: key
+      type: System.String
+      description: Parameter key
+    - id: value
+      type: System.Object
+      description: Parameter value
+    content.vb: Public Sub setParam(key As String, value As Object)
+  overload: IDAnalyzer.ApiParent.setParam*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  commentId: M:IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  id: throwApiException(System.Boolean)
+  parent: IDAnalyzer.ApiParent
+  langs:
+  - csharp
+  - vb
+  name: throwApiException(Boolean)
+  nameWithType: ApiParent.throwApiException(Boolean)
+  fullName: IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: throwApiException
+    path: IDAnalyzer.cs
+    startLine: 131
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nWhether an exception should be thrown if API response contains an error message\n"
+  example: []
+  syntax:
+    content: public void throwApiException(bool sw = false)
+    parameters:
+    - id: sw
+      type: System.Boolean
+      description: Throw exception upon API error, defaults to false
+    content.vb: Public Sub throwApiException(sw As Boolean = False)
+  overload: IDAnalyzer.ApiParent.throwApiException*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: IDAnalyzer
+  commentId: N:IDAnalyzer
+  name: IDAnalyzer
+  nameWithType: IDAnalyzer
+  fullName: IDAnalyzer
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Collections.Hashtable
+  commentId: T:System.Collections.Hashtable
+  parent: System.Collections
+  isExternal: true
+  name: Hashtable
+  nameWithType: Hashtable
+  fullName: System.Collections.Hashtable
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Net.Http.HttpClient
+  commentId: T:System.Net.Http.HttpClient
+  parent: System.Net.Http
+  isExternal: true
+  name: HttpClient
+  nameWithType: HttpClient
+  fullName: System.Net.Http.HttpClient
+- uid: System.Net.Http
+  commentId: N:System.Net.Http
+  isExternal: true
+  name: System.Net.Http
+  nameWithType: System.Net.Http
+  fullName: System.Net.Http
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: IDAnalyzer.ApiParent.#ctor*
+  commentId: Overload:IDAnalyzer.ApiParent.#ctor
+  name: ApiParent
+  nameWithType: ApiParent.ApiParent
+  fullName: IDAnalyzer.ApiParent.ApiParent
+- uid: IDAnalyzer.ApiParent.getApiKey*
+  commentId: Overload:IDAnalyzer.ApiParent.getApiKey
+  name: getApiKey
+  nameWithType: ApiParent.getApiKey
+  fullName: IDAnalyzer.ApiParent.getApiKey
+- uid: IDAnalyzer.ApiParent.setParam*
+  commentId: Overload:IDAnalyzer.ApiParent.setParam
+  name: setParam
+  nameWithType: ApiParent.setParam
+  fullName: IDAnalyzer.ApiParent.setParam
+- uid: IDAnalyzer.ApiParent.throwApiException*
+  commentId: Overload:IDAnalyzer.ApiParent.throwApiException
+  name: throwApiException
+  nameWithType: ApiParent.throwApiException
+  fullName: IDAnalyzer.ApiParent.throwApiException

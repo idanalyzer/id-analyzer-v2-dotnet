@@ -1,0 +1,1062 @@
+### YamlMime:ManagedReference
+items:
+- uid: IDAnalyzer.Scanner
+  commentId: T:IDAnalyzer.Scanner
+  id: Scanner
+  parent: IDAnalyzer
+  children:
+  - IDAnalyzer.Scanner.#ctor(System.String)
+  - IDAnalyzer.Scanner.quickScan(System.String,System.String,System.Boolean)
+  - IDAnalyzer.Scanner.restrictCountry(System.String)
+  - IDAnalyzer.Scanner.restrictState(System.String)
+  - IDAnalyzer.Scanner.restrictType(System.String)
+  - IDAnalyzer.Scanner.scan(System.String,System.String,System.String,System.String)
+  - IDAnalyzer.Scanner.setContractOptions(System.String,System.String,System.Collections.Hashtable)
+  - IDAnalyzer.Scanner.setCustomData(System.String)
+  - IDAnalyzer.Scanner.setProfile(System.Object)
+  - IDAnalyzer.Scanner.setUserIp(System.String)
+  - IDAnalyzer.Scanner.verifyUserInformation(System.String,System.String,System.String,System.String,System.String,System.String)
+  langs:
+  - csharp
+  - vb
+  name: Scanner
+  nameWithType: Scanner
+  fullName: IDAnalyzer.Scanner
+  type: Class
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: Scanner
+    path: IDAnalyzer.cs
+    startLine: 753
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: 'public class Scanner : ApiParent'
+    content.vb: >-
+      Public Class Scanner
+          Inherits ApiParent
+  inheritance:
+  - System.Object
+  - IDAnalyzer.ApiParent
+  inheritedMembers:
+  - IDAnalyzer.ApiParent.apiKey
+  - IDAnalyzer.ApiParent.client_lib
+  - IDAnalyzer.ApiParent.config
+  - IDAnalyzer.ApiParent.throwError
+  - IDAnalyzer.ApiParent.sess
+  - IDAnalyzer.ApiParent.getApiKey(System.String)
+  - IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+  - IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: IDAnalyzer.Scanner.#ctor(System.String)
+  commentId: M:IDAnalyzer.Scanner.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: IDAnalyzer.Scanner
+  langs:
+  - csharp
+  - vb
+  name: Scanner(String)
+  nameWithType: Scanner.Scanner(String)
+  fullName: IDAnalyzer.Scanner.Scanner(System.String)
+  type: Constructor
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: .ctor
+    path: IDAnalyzer.cs
+    startLine: 755
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: public Scanner(string apiKey = null)
+    parameters:
+    - id: apiKey
+      type: System.String
+    content.vb: Public Sub New(apiKey As String = Nothing)
+  overload: IDAnalyzer.Scanner.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Scanner.setUserIp(System.String)
+  commentId: M:IDAnalyzer.Scanner.setUserIp(System.String)
+  id: setUserIp(System.String)
+  parent: IDAnalyzer.Scanner
+  langs:
+  - csharp
+  - vb
+  name: setUserIp(String)
+  nameWithType: Scanner.setUserIp(String)
+  fullName: IDAnalyzer.Scanner.setUserIp(System.String)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: setUserIp
+    path: IDAnalyzer.cs
+    startLine: 780
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nPass in user IP address to check if ID is issued from the same country as the IP address, if no value is provided http connection IP will be used.\n"
+  example: []
+  syntax:
+    content: public void setUserIp(string ip)
+    parameters:
+    - id: ip
+      type: System.String
+      description: ''
+    content.vb: Public Sub setUserIp(ip As String)
+  overload: IDAnalyzer.Scanner.setUserIp*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Scanner.setCustomData(System.String)
+  commentId: M:IDAnalyzer.Scanner.setCustomData(System.String)
+  id: setCustomData(System.String)
+  parent: IDAnalyzer.Scanner
+  langs:
+  - csharp
+  - vb
+  name: setCustomData(String)
+  nameWithType: Scanner.setCustomData(String)
+  fullName: IDAnalyzer.Scanner.setCustomData(System.String)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: setCustomData
+    path: IDAnalyzer.cs
+    startLine: 789
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nSet an arbitrary string you wish to save with the transaction. e.g Internal customer reference number\n"
+  example: []
+  syntax:
+    content: public void setCustomData(string customData)
+    parameters:
+    - id: customData
+      type: System.String
+      description: ''
+    content.vb: Public Sub setCustomData(customData As String)
+  overload: IDAnalyzer.Scanner.setCustomData*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Scanner.setContractOptions(System.String,System.String,System.Collections.Hashtable)
+  commentId: M:IDAnalyzer.Scanner.setContractOptions(System.String,System.String,System.Collections.Hashtable)
+  id: setContractOptions(System.String,System.String,System.Collections.Hashtable)
+  parent: IDAnalyzer.Scanner
+  langs:
+  - csharp
+  - vb
+  name: setContractOptions(String, String, Hashtable)
+  nameWithType: Scanner.setContractOptions(String, String, Hashtable)
+  fullName: IDAnalyzer.Scanner.setContractOptions(System.String, System.String, System.Collections.Hashtable)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: setContractOptions
+    path: IDAnalyzer.cs
+    startLine: 800
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nAutomatically generate contract document using value parsed from uploaded ID\n"
+  example: []
+  syntax:
+    content: public void setContractOptions(string templateId = "", string _format = "PDF", Hashtable extraFillData = null)
+    parameters:
+    - id: templateId
+      type: System.String
+      description: Enter up to 5 contract template ID (seperated by comma)
+    - id: _format
+      type: System.String
+      description: PDF, DOCX or HTML
+    - id: extraFillData
+      type: System.Collections.Hashtable
+      description: Array data in key-value pairs to autofill dynamic fields, data from user ID will be used first in case of a conflict. For example, passing {&quot;myparameter&quot;:&quot;abc&quot;} would fill %{myparameter} in contract template with &quot;abc&quot;.
+    content.vb: Public Sub setContractOptions(templateId As String = "", _format As String = "PDF", extraFillData As Hashtable = Nothing)
+  overload: IDAnalyzer.Scanner.setContractOptions*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Scanner.setProfile(System.Object)
+  commentId: M:IDAnalyzer.Scanner.setProfile(System.Object)
+  id: setProfile(System.Object)
+  parent: IDAnalyzer.Scanner
+  langs:
+  - csharp
+  - vb
+  name: setProfile(Object)
+  nameWithType: Scanner.setProfile(Object)
+  fullName: IDAnalyzer.Scanner.setProfile(System.Object)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: setProfile
+    path: IDAnalyzer.cs
+    startLine: 833
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nSet KYC Profile\n"
+  example: []
+  syntax:
+    content: public void setProfile(object profile)
+    parameters:
+    - id: profile
+      type: System.Object
+      description: KYCProfile object
+    content.vb: Public Sub setProfile(profile As Object)
+  overload: IDAnalyzer.Scanner.setProfile*
+  exceptions:
+  - type: IDAnalyzer.InvalidArgumentException
+    commentId: T:IDAnalyzer.InvalidArgumentException
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Scanner.verifyUserInformation(System.String,System.String,System.String,System.String,System.String,System.String)
+  commentId: M:IDAnalyzer.Scanner.verifyUserInformation(System.String,System.String,System.String,System.String,System.String,System.String)
+  id: verifyUserInformation(System.String,System.String,System.String,System.String,System.String,System.String)
+  parent: IDAnalyzer.Scanner
+  langs:
+  - csharp
+  - vb
+  name: verifyUserInformation(String, String, String, String, String, String)
+  nameWithType: Scanner.verifyUserInformation(String, String, String, String, String, String)
+  fullName: IDAnalyzer.Scanner.verifyUserInformation(System.String, System.String, System.String, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: verifyUserInformation
+    path: IDAnalyzer.cs
+    startLine: 864
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nCheck if customer information matches with uploaded document\n"
+  example: []
+  syntax:
+    content: public void verifyUserInformation(string documentNumber = "", string fullName = "", string dob = "", string ageRange = "", string address = "", string postcode = "")
+    parameters:
+    - id: documentNumber
+      type: System.String
+      description: Document or ID number
+    - id: fullName
+      type: System.String
+      description: Full name
+    - id: dob
+      type: System.String
+      description: Date of birth in YYYY/MM/DD
+    - id: ageRange
+      type: System.String
+      description: 'Age range, example: 18-40'
+    - id: address
+      type: System.String
+      description: Address
+    - id: postcode
+      type: System.String
+      description: Postcode
+    content.vb: Public Sub verifyUserInformation(documentNumber As String = "", fullName As String = "", dob As String = "", ageRange As String = "", address As String = "", postcode As String = "")
+  overload: IDAnalyzer.Scanner.verifyUserInformation*
+  exceptions:
+  - type: IDAnalyzer.InvalidArgumentException
+    commentId: T:IDAnalyzer.InvalidArgumentException
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Scanner.restrictCountry(System.String)
+  commentId: M:IDAnalyzer.Scanner.restrictCountry(System.String)
+  id: restrictCountry(System.String)
+  parent: IDAnalyzer.Scanner
+  langs:
+  - csharp
+  - vb
+  name: restrictCountry(String)
+  nameWithType: Scanner.restrictCountry(String)
+  fullName: IDAnalyzer.Scanner.restrictCountry(System.String)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: restrictCountry
+    path: IDAnalyzer.cs
+    startLine: 909
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nCheck if the document was issued by specified countries. Separate multiple values with comma. For example &quot;US,CA&quot; would accept documents from the United States and Canada.\n"
+  example: []
+  syntax:
+    content: public void restrictCountry(string countryCodes = "US,CA,UK")
+    parameters:
+    - id: countryCodes
+      type: System.String
+      description: ISO ALPHA-2 Country Code separated by comma
+    content.vb: Public Sub restrictCountry(countryCodes As String = "US,CA,UK")
+  overload: IDAnalyzer.Scanner.restrictCountry*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Scanner.restrictState(System.String)
+  commentId: M:IDAnalyzer.Scanner.restrictState(System.String)
+  id: restrictState(System.String)
+  parent: IDAnalyzer.Scanner
+  langs:
+  - csharp
+  - vb
+  name: restrictState(String)
+  nameWithType: Scanner.restrictState(String)
+  fullName: IDAnalyzer.Scanner.restrictState(System.String)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: restrictState
+    path: IDAnalyzer.cs
+    startLine: 918
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nCheck if the document was issued by specified state. Separate multiple values with comma. For example &quot;CA,TX&quot; would accept documents from California and Texas.\n"
+  example: []
+  syntax:
+    content: public void restrictState(string states = "CA,TX")
+    parameters:
+    - id: states
+      type: System.String
+      description: State full name or abbreviation separated by comma
+    content.vb: Public Sub restrictState(states As String = "CA,TX")
+  overload: IDAnalyzer.Scanner.restrictState*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Scanner.restrictType(System.String)
+  commentId: M:IDAnalyzer.Scanner.restrictType(System.String)
+  id: restrictType(System.String)
+  parent: IDAnalyzer.Scanner
+  langs:
+  - csharp
+  - vb
+  name: restrictType(String)
+  nameWithType: Scanner.restrictType(String)
+  fullName: IDAnalyzer.Scanner.restrictType(System.String)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: restrictType
+    path: IDAnalyzer.cs
+    startLine: 927
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nCheck if the document was one of the specified types. For example, &quot;PD&quot; would accept both passport and driver license.\n"
+  example: []
+  syntax:
+    content: public void restrictType(string documentType = "DIP")
+    parameters:
+    - id: documentType
+      type: System.String
+      description: 'P: Passport, D: Driver&apos;s License, I: Identity Card'
+    content.vb: Public Sub restrictType(documentType As String = "DIP")
+  overload: IDAnalyzer.Scanner.restrictType*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Scanner.scan(System.String,System.String,System.String,System.String)
+  commentId: M:IDAnalyzer.Scanner.scan(System.String,System.String,System.String,System.String)
+  id: scan(System.String,System.String,System.String,System.String)
+  parent: IDAnalyzer.Scanner
+  langs:
+  - csharp
+  - vb
+  name: scan(String, String, String, String)
+  nameWithType: Scanner.scan(String, String, String, String)
+  fullName: IDAnalyzer.Scanner.scan(System.String, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: scan
+    path: IDAnalyzer.cs
+    startLine: 941
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: public JObject scan(string documentFront = "", string documentBack = "", string facePhoto = "", string faceVideo = "")
+    parameters:
+    - id: documentFront
+      type: System.String
+    - id: documentBack
+      type: System.String
+    - id: facePhoto
+      type: System.String
+    - id: faceVideo
+      type: System.String
+    return:
+      type: JObject
+    content.vb: Public Function scan(documentFront As String = "", documentBack As String = "", facePhoto As String = "", faceVideo As String = "") As JObject
+  overload: IDAnalyzer.Scanner.scan*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Scanner.quickScan(System.String,System.String,System.Boolean)
+  commentId: M:IDAnalyzer.Scanner.quickScan(System.String,System.String,System.Boolean)
+  id: quickScan(System.String,System.String,System.Boolean)
+  parent: IDAnalyzer.Scanner
+  langs:
+  - csharp
+  - vb
+  name: quickScan(String, String, Boolean)
+  nameWithType: Scanner.quickScan(String, String, Boolean)
+  fullName: IDAnalyzer.Scanner.quickScan(System.String, System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: quickScan
+    path: IDAnalyzer.cs
+    startLine: 984
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\nInitiate a quick identity document OCR scan by providing input images.\n"
+  example: []
+  syntax:
+    content: public JObject quickScan(string documentFront = "", string documentBack = "", bool cacheImage = false)
+    parameters:
+    - id: documentFront
+      type: System.String
+      description: Front of Document (file path, base64 content or URL)
+    - id: documentBack
+      type: System.String
+      description: Back of Document (file path, base64 content or URL)
+    - id: cacheImage
+      type: System.Boolean
+      description: Cache uploaded image(s) for 24 hours and obtain a cache reference for each image, the reference hash can be used to start standard scan transaction without re-uploading the file.
+    return:
+      type: JObject
+      description: ''
+    content.vb: Public Function quickScan(documentFront As String = "", documentBack As String = "", cacheImage As Boolean = False) As JObject
+  overload: IDAnalyzer.Scanner.quickScan*
+  exceptions:
+  - type: IDAnalyzer.InvalidArgumentException
+    commentId: T:IDAnalyzer.InvalidArgumentException
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: IDAnalyzer
+  commentId: N:IDAnalyzer
+  name: IDAnalyzer
+  nameWithType: IDAnalyzer
+  fullName: IDAnalyzer
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: IDAnalyzer.ApiParent
+  commentId: T:IDAnalyzer.ApiParent
+  parent: IDAnalyzer
+  name: ApiParent
+  nameWithType: ApiParent
+  fullName: IDAnalyzer.ApiParent
+- uid: IDAnalyzer.ApiParent.apiKey
+  commentId: F:IDAnalyzer.ApiParent.apiKey
+  parent: IDAnalyzer.ApiParent
+  name: apiKey
+  nameWithType: ApiParent.apiKey
+  fullName: IDAnalyzer.ApiParent.apiKey
+- uid: IDAnalyzer.ApiParent.client_lib
+  commentId: F:IDAnalyzer.ApiParent.client_lib
+  parent: IDAnalyzer.ApiParent
+  name: client_lib
+  nameWithType: ApiParent.client_lib
+  fullName: IDAnalyzer.ApiParent.client_lib
+- uid: IDAnalyzer.ApiParent.config
+  commentId: F:IDAnalyzer.ApiParent.config
+  parent: IDAnalyzer.ApiParent
+  name: config
+  nameWithType: ApiParent.config
+  fullName: IDAnalyzer.ApiParent.config
+- uid: IDAnalyzer.ApiParent.throwError
+  commentId: F:IDAnalyzer.ApiParent.throwError
+  parent: IDAnalyzer.ApiParent
+  name: throwError
+  nameWithType: ApiParent.throwError
+  fullName: IDAnalyzer.ApiParent.throwError
+- uid: IDAnalyzer.ApiParent.sess
+  commentId: F:IDAnalyzer.ApiParent.sess
+  parent: IDAnalyzer.ApiParent
+  name: sess
+  nameWithType: ApiParent.sess
+  fullName: IDAnalyzer.ApiParent.sess
+- uid: IDAnalyzer.ApiParent.getApiKey(System.String)
+  commentId: M:IDAnalyzer.ApiParent.getApiKey(System.String)
+  parent: IDAnalyzer.ApiParent
+  isExternal: true
+  name: getApiKey(String)
+  nameWithType: ApiParent.getApiKey(String)
+  fullName: IDAnalyzer.ApiParent.getApiKey(System.String)
+  spec.csharp:
+  - uid: IDAnalyzer.ApiParent.getApiKey(System.String)
+    name: getApiKey
+    nameWithType: ApiParent.getApiKey
+    fullName: IDAnalyzer.ApiParent.getApiKey
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: IDAnalyzer.ApiParent.getApiKey(System.String)
+    name: getApiKey
+    nameWithType: ApiParent.getApiKey
+    fullName: IDAnalyzer.ApiParent.getApiKey
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+  commentId: M:IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+  parent: IDAnalyzer.ApiParent
+  isExternal: true
+  name: setParam(String, Object)
+  nameWithType: ApiParent.setParam(String, Object)
+  fullName: IDAnalyzer.ApiParent.setParam(System.String, System.Object)
+  spec.csharp:
+  - uid: IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+    name: setParam
+    nameWithType: ApiParent.setParam
+    fullName: IDAnalyzer.ApiParent.setParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+    name: setParam
+    nameWithType: ApiParent.setParam
+    fullName: IDAnalyzer.ApiParent.setParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  commentId: M:IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  parent: IDAnalyzer.ApiParent
+  isExternal: true
+  name: throwApiException(Boolean)
+  nameWithType: ApiParent.throwApiException(Boolean)
+  fullName: IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  spec.csharp:
+  - uid: IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+    name: throwApiException
+    nameWithType: ApiParent.throwApiException
+    fullName: IDAnalyzer.ApiParent.throwApiException
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+    name: throwApiException
+    nameWithType: ApiParent.throwApiException
+    fullName: IDAnalyzer.ApiParent.throwApiException
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: IDAnalyzer.Scanner.#ctor*
+  commentId: Overload:IDAnalyzer.Scanner.#ctor
+  name: Scanner
+  nameWithType: Scanner.Scanner
+  fullName: IDAnalyzer.Scanner.Scanner
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: IDAnalyzer.Scanner.setUserIp*
+  commentId: Overload:IDAnalyzer.Scanner.setUserIp
+  name: setUserIp
+  nameWithType: Scanner.setUserIp
+  fullName: IDAnalyzer.Scanner.setUserIp
+- uid: IDAnalyzer.Scanner.setCustomData*
+  commentId: Overload:IDAnalyzer.Scanner.setCustomData
+  name: setCustomData
+  nameWithType: Scanner.setCustomData
+  fullName: IDAnalyzer.Scanner.setCustomData
+- uid: IDAnalyzer.Scanner.setContractOptions*
+  commentId: Overload:IDAnalyzer.Scanner.setContractOptions
+  name: setContractOptions
+  nameWithType: Scanner.setContractOptions
+  fullName: IDAnalyzer.Scanner.setContractOptions
+- uid: System.Collections.Hashtable
+  commentId: T:System.Collections.Hashtable
+  parent: System.Collections
+  isExternal: true
+  name: Hashtable
+  nameWithType: Hashtable
+  fullName: System.Collections.Hashtable
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+- uid: IDAnalyzer.InvalidArgumentException
+  commentId: T:IDAnalyzer.InvalidArgumentException
+  name: InvalidArgumentException
+  nameWithType: InvalidArgumentException
+  fullName: IDAnalyzer.InvalidArgumentException
+- uid: IDAnalyzer.Scanner.setProfile*
+  commentId: Overload:IDAnalyzer.Scanner.setProfile
+  name: setProfile
+  nameWithType: Scanner.setProfile
+  fullName: IDAnalyzer.Scanner.setProfile
+- uid: IDAnalyzer.Scanner.verifyUserInformation*
+  commentId: Overload:IDAnalyzer.Scanner.verifyUserInformation
+  name: verifyUserInformation
+  nameWithType: Scanner.verifyUserInformation
+  fullName: IDAnalyzer.Scanner.verifyUserInformation
+- uid: IDAnalyzer.Scanner.restrictCountry*
+  commentId: Overload:IDAnalyzer.Scanner.restrictCountry
+  name: restrictCountry
+  nameWithType: Scanner.restrictCountry
+  fullName: IDAnalyzer.Scanner.restrictCountry
+- uid: IDAnalyzer.Scanner.restrictState*
+  commentId: Overload:IDAnalyzer.Scanner.restrictState
+  name: restrictState
+  nameWithType: Scanner.restrictState
+  fullName: IDAnalyzer.Scanner.restrictState
+- uid: IDAnalyzer.Scanner.restrictType*
+  commentId: Overload:IDAnalyzer.Scanner.restrictType
+  name: restrictType
+  nameWithType: Scanner.restrictType
+  fullName: IDAnalyzer.Scanner.restrictType
+- uid: IDAnalyzer.Scanner.scan*
+  commentId: Overload:IDAnalyzer.Scanner.scan
+  name: scan
+  nameWithType: Scanner.scan
+  fullName: IDAnalyzer.Scanner.scan
+- uid: JObject
+  isExternal: true
+  name: JObject
+  nameWithType: JObject
+  fullName: JObject
+- uid: IDAnalyzer.Scanner.quickScan*
+  commentId: Overload:IDAnalyzer.Scanner.quickScan
+  name: quickScan
+  nameWithType: Scanner.quickScan
+  fullName: IDAnalyzer.Scanner.quickScan
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean

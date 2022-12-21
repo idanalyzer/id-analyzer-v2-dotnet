@@ -1,0 +1,796 @@
+### YamlMime:ManagedReference
+items:
+- uid: IDAnalyzer.Docupass
+  commentId: T:IDAnalyzer.Docupass
+  id: Docupass
+  parent: IDAnalyzer
+  children:
+  - IDAnalyzer.Docupass.#ctor(System.String)
+  - IDAnalyzer.Docupass.createDocupass(System.Object,System.String,System.String,System.Boolean,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)
+  - IDAnalyzer.Docupass.deleteDocupass(System.String)
+  - IDAnalyzer.Docupass.listDocupass(System.Int32,System.Int32,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: Docupass
+  nameWithType: Docupass
+  fullName: IDAnalyzer.Docupass
+  type: Class
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: Docupass
+    path: IDAnalyzer.cs
+    startLine: 1279
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: 'public class Docupass : ApiParent'
+    content.vb: >-
+      Public Class Docupass
+          Inherits ApiParent
+  inheritance:
+  - System.Object
+  - IDAnalyzer.ApiParent
+  inheritedMembers:
+  - IDAnalyzer.ApiParent.apiKey
+  - IDAnalyzer.ApiParent.client_lib
+  - IDAnalyzer.ApiParent.config
+  - IDAnalyzer.ApiParent.throwError
+  - IDAnalyzer.ApiParent.sess
+  - IDAnalyzer.ApiParent.getApiKey(System.String)
+  - IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+  - IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: IDAnalyzer.Docupass.#ctor(System.String)
+  commentId: M:IDAnalyzer.Docupass.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: IDAnalyzer.Docupass
+  langs:
+  - csharp
+  - vb
+  name: Docupass(String)
+  nameWithType: Docupass.Docupass(String)
+  fullName: IDAnalyzer.Docupass.Docupass(System.String)
+  type: Constructor
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: .ctor
+    path: IDAnalyzer.cs
+    startLine: 1281
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  syntax:
+    content: public Docupass(string apiKey = null)
+    parameters:
+    - id: apiKey
+      type: System.String
+    content.vb: Public Sub New(apiKey As String = Nothing)
+  overload: IDAnalyzer.Docupass.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Docupass.listDocupass(System.Int32,System.Int32,System.Int32)
+  commentId: M:IDAnalyzer.Docupass.listDocupass(System.Int32,System.Int32,System.Int32)
+  id: listDocupass(System.Int32,System.Int32,System.Int32)
+  parent: IDAnalyzer.Docupass
+  langs:
+  - csharp
+  - vb
+  name: listDocupass(Int32, Int32, Int32)
+  nameWithType: Docupass.listDocupass(Int32, Int32, Int32)
+  fullName: IDAnalyzer.Docupass.listDocupass(System.Int32, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: listDocupass
+    path: IDAnalyzer.cs
+    startLine: 1293
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\n\n"
+  example: []
+  syntax:
+    content: public JObject listDocupass(int order = -1, int limit = 10, int offset = 0)
+    parameters:
+    - id: order
+      type: System.Int32
+      description: ''
+    - id: limit
+      type: System.Int32
+      description: ''
+    - id: offset
+      type: System.Int32
+      description: ''
+    return:
+      type: JObject
+      description: ''
+    content.vb: Public Function listDocupass(order As Integer = -1, limit As Integer = 10, offset As Integer = 0) As JObject
+  overload: IDAnalyzer.Docupass.listDocupass*
+  exceptions:
+  - type: IDAnalyzer.InvalidArgumentException
+    commentId: T:IDAnalyzer.InvalidArgumentException
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Docupass.createDocupass(System.Object,System.String,System.String,System.Boolean,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)
+  commentId: M:IDAnalyzer.Docupass.createDocupass(System.Object,System.String,System.String,System.Boolean,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)
+  id: createDocupass(System.Object,System.String,System.String,System.Boolean,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)
+  parent: IDAnalyzer.Docupass
+  langs:
+  - csharp
+  - vb
+  name: createDocupass(Object, String, String, Boolean, String, String, String, String, Int32, String, String, String, String, String, String, String, String, String, String)
+  nameWithType: Docupass.createDocupass(Object, String, String, Boolean, String, String, String, String, Int32, String, String, String, String, String, String, String, String, String, String)
+  fullName: IDAnalyzer.Docupass.createDocupass(System.Object, System.String, System.String, System.Boolean, System.String, System.String, System.String, System.String, System.Int32, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: createDocupass
+    path: IDAnalyzer.cs
+    startLine: 1340
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\n\n"
+  example: []
+  syntax:
+    content: public JObject createDocupass(object profile = null, string contractFormat = "pdf", string contractGenerate = "", bool reusable = false, string contractPrefill = "", string contractSign = "", string customData = "", string language = "", int mode = 0, string referenceDocument = "", string referenceDocumentBack = "", string referenceFace = "", string userPhone = "", string verifyAddress = "", string verifyAge = "", string verifyDOB = "", string verifyDocumentNumber = "", string verifyName = "", string verifyPostcode = "")
+    parameters:
+    - id: profile
+      type: System.Object
+      description: ''
+    - id: contractFormat
+      type: System.String
+      description: ''
+    - id: contractGenerate
+      type: System.String
+      description: ''
+    - id: reusable
+      type: System.Boolean
+      description: ''
+    - id: contractPrefill
+      type: System.String
+      description: ''
+    - id: contractSign
+      type: System.String
+      description: ''
+    - id: customData
+      type: System.String
+      description: ''
+    - id: language
+      type: System.String
+      description: ''
+    - id: mode
+      type: System.Int32
+      description: ''
+    - id: referenceDocument
+      type: System.String
+      description: ''
+    - id: referenceDocumentBack
+      type: System.String
+      description: ''
+    - id: referenceFace
+      type: System.String
+      description: ''
+    - id: userPhone
+      type: System.String
+      description: ''
+    - id: verifyAddress
+      type: System.String
+      description: ''
+    - id: verifyAge
+      type: System.String
+      description: ''
+    - id: verifyDOB
+      type: System.String
+      description: ''
+    - id: verifyDocumentNumber
+      type: System.String
+      description: ''
+    - id: verifyName
+      type: System.String
+      description: ''
+    - id: verifyPostcode
+      type: System.String
+      description: ''
+    return:
+      type: JObject
+      description: ''
+    content.vb: Public Function createDocupass(profile As Object = Nothing, contractFormat As String = "pdf", contractGenerate As String = "", reusable As Boolean = False, contractPrefill As String = "", contractSign As String = "", customData As String = "", language As String = "", mode As Integer = 0, referenceDocument As String = "", referenceDocumentBack As String = "", referenceFace As String = "", userPhone As String = "", verifyAddress As String = "", verifyAge As String = "", verifyDOB As String = "", verifyDocumentNumber As String = "", verifyName As String = "", verifyPostcode As String = "") As JObject
+  overload: IDAnalyzer.Docupass.createDocupass*
+  exceptions:
+  - type: IDAnalyzer.InvalidArgumentException
+    commentId: T:IDAnalyzer.InvalidArgumentException
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: IDAnalyzer.Docupass.deleteDocupass(System.String)
+  commentId: M:IDAnalyzer.Docupass.deleteDocupass(System.String)
+  id: deleteDocupass(System.String)
+  parent: IDAnalyzer.Docupass
+  langs:
+  - csharp
+  - vb
+  name: deleteDocupass(String)
+  nameWithType: Docupass.deleteDocupass(String)
+  fullName: IDAnalyzer.Docupass.deleteDocupass(System.String)
+  type: Method
+  source:
+    remote:
+      path: IDAnalyzer/IDAnalyzer.cs
+      branch: main
+      repo: https://github.com/idanalyzer/id-analyzer-v2-dotnet.git
+    id: deleteDocupass
+    path: IDAnalyzer.cs
+    startLine: 1398
+  assemblies:
+  - IDAnalyzer
+  namespace: IDAnalyzer
+  summary: "\n\n"
+  example: []
+  syntax:
+    content: public JObject deleteDocupass(string reference = "")
+    parameters:
+    - id: reference
+      type: System.String
+      description: ''
+    return:
+      type: JObject
+      description: ''
+    content.vb: Public Function deleteDocupass(reference As String = "") As JObject
+  overload: IDAnalyzer.Docupass.deleteDocupass*
+  exceptions:
+  - type: IDAnalyzer.InvalidArgumentException
+    commentId: T:IDAnalyzer.InvalidArgumentException
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: IDAnalyzer
+  commentId: N:IDAnalyzer
+  name: IDAnalyzer
+  nameWithType: IDAnalyzer
+  fullName: IDAnalyzer
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: IDAnalyzer.ApiParent
+  commentId: T:IDAnalyzer.ApiParent
+  parent: IDAnalyzer
+  name: ApiParent
+  nameWithType: ApiParent
+  fullName: IDAnalyzer.ApiParent
+- uid: IDAnalyzer.ApiParent.apiKey
+  commentId: F:IDAnalyzer.ApiParent.apiKey
+  parent: IDAnalyzer.ApiParent
+  name: apiKey
+  nameWithType: ApiParent.apiKey
+  fullName: IDAnalyzer.ApiParent.apiKey
+- uid: IDAnalyzer.ApiParent.client_lib
+  commentId: F:IDAnalyzer.ApiParent.client_lib
+  parent: IDAnalyzer.ApiParent
+  name: client_lib
+  nameWithType: ApiParent.client_lib
+  fullName: IDAnalyzer.ApiParent.client_lib
+- uid: IDAnalyzer.ApiParent.config
+  commentId: F:IDAnalyzer.ApiParent.config
+  parent: IDAnalyzer.ApiParent
+  name: config
+  nameWithType: ApiParent.config
+  fullName: IDAnalyzer.ApiParent.config
+- uid: IDAnalyzer.ApiParent.throwError
+  commentId: F:IDAnalyzer.ApiParent.throwError
+  parent: IDAnalyzer.ApiParent
+  name: throwError
+  nameWithType: ApiParent.throwError
+  fullName: IDAnalyzer.ApiParent.throwError
+- uid: IDAnalyzer.ApiParent.sess
+  commentId: F:IDAnalyzer.ApiParent.sess
+  parent: IDAnalyzer.ApiParent
+  name: sess
+  nameWithType: ApiParent.sess
+  fullName: IDAnalyzer.ApiParent.sess
+- uid: IDAnalyzer.ApiParent.getApiKey(System.String)
+  commentId: M:IDAnalyzer.ApiParent.getApiKey(System.String)
+  parent: IDAnalyzer.ApiParent
+  isExternal: true
+  name: getApiKey(String)
+  nameWithType: ApiParent.getApiKey(String)
+  fullName: IDAnalyzer.ApiParent.getApiKey(System.String)
+  spec.csharp:
+  - uid: IDAnalyzer.ApiParent.getApiKey(System.String)
+    name: getApiKey
+    nameWithType: ApiParent.getApiKey
+    fullName: IDAnalyzer.ApiParent.getApiKey
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: IDAnalyzer.ApiParent.getApiKey(System.String)
+    name: getApiKey
+    nameWithType: ApiParent.getApiKey
+    fullName: IDAnalyzer.ApiParent.getApiKey
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+  commentId: M:IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+  parent: IDAnalyzer.ApiParent
+  isExternal: true
+  name: setParam(String, Object)
+  nameWithType: ApiParent.setParam(String, Object)
+  fullName: IDAnalyzer.ApiParent.setParam(System.String, System.Object)
+  spec.csharp:
+  - uid: IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+    name: setParam
+    nameWithType: ApiParent.setParam
+    fullName: IDAnalyzer.ApiParent.setParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: IDAnalyzer.ApiParent.setParam(System.String,System.Object)
+    name: setParam
+    nameWithType: ApiParent.setParam
+    fullName: IDAnalyzer.ApiParent.setParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  commentId: M:IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  parent: IDAnalyzer.ApiParent
+  isExternal: true
+  name: throwApiException(Boolean)
+  nameWithType: ApiParent.throwApiException(Boolean)
+  fullName: IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+  spec.csharp:
+  - uid: IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+    name: throwApiException
+    nameWithType: ApiParent.throwApiException
+    fullName: IDAnalyzer.ApiParent.throwApiException
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: IDAnalyzer.ApiParent.throwApiException(System.Boolean)
+    name: throwApiException
+    nameWithType: ApiParent.throwApiException
+    fullName: IDAnalyzer.ApiParent.throwApiException
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: IDAnalyzer.Docupass.#ctor*
+  commentId: Overload:IDAnalyzer.Docupass.#ctor
+  name: Docupass
+  nameWithType: Docupass.Docupass
+  fullName: IDAnalyzer.Docupass.Docupass
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: IDAnalyzer.InvalidArgumentException
+  commentId: T:IDAnalyzer.InvalidArgumentException
+  name: InvalidArgumentException
+  nameWithType: InvalidArgumentException
+  fullName: IDAnalyzer.InvalidArgumentException
+- uid: IDAnalyzer.Docupass.listDocupass*
+  commentId: Overload:IDAnalyzer.Docupass.listDocupass
+  name: listDocupass
+  nameWithType: Docupass.listDocupass
+  fullName: IDAnalyzer.Docupass.listDocupass
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: JObject
+  isExternal: true
+  name: JObject
+  nameWithType: JObject
+  fullName: JObject
+- uid: IDAnalyzer.Docupass.createDocupass*
+  commentId: Overload:IDAnalyzer.Docupass.createDocupass
+  name: createDocupass
+  nameWithType: Docupass.createDocupass
+  fullName: IDAnalyzer.Docupass.createDocupass
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: IDAnalyzer.Docupass.deleteDocupass*
+  commentId: Overload:IDAnalyzer.Docupass.deleteDocupass
+  name: deleteDocupass
+  nameWithType: Docupass.deleteDocupass
+  fullName: IDAnalyzer.Docupass.deleteDocupass
