@@ -4,16 +4,16 @@ This is a .Net SDK for [ID Analyzer Identity Verification APIs](https://www.idan
 
 We strongly discourage users to connect to ID Analyzer API endpoint directly  from client-side applications that will be distributed to end user, such as mobile app, or in-browser JavaScript. Your API key could be easily compromised, and if you are storing your customer's information inside Vault they could use your API key to fetch all your user details. Therefore, the best practice is always to implement a client side connection to your server, and call our APIs from the server-side.
 
-## Installation
+## Installation (Unlisted Packages)
 Install through nuget CLI
 
 ```shell
-nuget install IDAnalyzer
+
 ```
 Install through Visual Studio Package Manager Console
 
 ```shell
-Install-Package IDAnalyzer
+
 ```
 
 Alternatively, download this package and add the project under`/IDAnalyzer` to your solution
