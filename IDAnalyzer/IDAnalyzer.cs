@@ -154,7 +154,7 @@ namespace IDAnalyzer
         /// <param name="profileId">Custom profile ID or preset profile (security_none, security_low, security_medium, security_high). SECURITY_NONE will be used if left blank.</param>
         public Profile(string profileId = "")
         {
-            this.profileId = profileId == "" ? profileId : SECURITY_NONE;
+            this.profileId = profileId != "" ? profileId : SECURITY_NONE;
         }
 
         /// <summary>
