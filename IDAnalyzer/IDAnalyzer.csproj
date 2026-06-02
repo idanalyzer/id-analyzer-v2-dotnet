@@ -1,42 +1,39 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>IDAnalyzer.V2</PackageId>
     <Authors>IDAnalyzer.com</Authors>
     <Company>Evith Information Technology Ltd.</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README_NUGET.md</PackageReadmeFile>
     <PackageProjectUrl>https://www.idanalyzer.com</PackageProjectUrl>
-    <Product>ID Analyzer Dot Net SDK</Product>
-    <Description>Scan and validate driver license, passport and ID card from any country using ID Analyzer Core API. Express user identity verification and remote document signing via DocuPass. AML/PEP compliance check with AML API.</Description>
-    <Copyright>(C) 2021 IDAnalyzer.com</Copyright>
-    <PackageIcon>appicon.png</PackageIcon>
+    <Product>ID Analyzer .NET SDK (API v2)</Product>
+    <Description>.NET client library for the ID Analyzer API v2. Scan and validate driver license, passport and ID card from any country, perform face/liveness biometric verification, AML/PEP screening, DocuPass remote verification and e-signature, KYC profile management and contract generation. Targets the api2.idanalyzer.com fleet.</Description>
+    <Copyright>(C) 2026 IDAnalyzer.com</Copyright>
     <PackageTags>id analyzer,passport,driver license,id card,identity verification,id verification,id ocr,pdf417,mrz,aamva,aml,pep,signature,sign document online</PackageTags>
-    <PackageReleaseNotes>v1.2.1
+    <PackageReleaseNotes>1.1.0
 
-Added AML Support
-Added Base64 Content as Scan input in Core API</PackageReleaseNotes>
+Full API v2 surface parity (veryquickscan, aml, amlv3, KYC profile CRUD, webhook management, account, single-docupass get).
+Base URL now defaults to the load-balanced api2.idanalyzer.com (was the single-node v2-us1.idanalyzer.com); unknown IDANALYZER_REGION now throws.
+Fixed updateTransaction decision validation and Profile.webhook protocol guard.
+Published under the new package id IDAnalyzer.V2 (the legacy IDAnalyzer package remains the API v1 SDK).</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/idanalyzer/id-analyzer-dotnet</RepositoryUrl>
-    <AssemblyVersion>1.2.2.0</AssemblyVersion>
-    <FileVersion>1.2.2.0</FileVersion>
-    <Version>1.2.2</Version>
-	<LangVersion>8.0</LangVersion>
+    <RepositoryUrl>https://github.com/idanalyzer/id-analyzer-v2-dotnet</RepositoryUrl>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+    <Version>1.1.0</Version>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="docfx.console" Version="2.56.7">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\img\appicon.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
+    <None Include="..\README_NUGET.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
