@@ -20,9 +20,9 @@ Fixed updateTransaction decision validation and Profile.webhook protocol guard.
 Published under the new package id IDAnalyzer.V2 (the legacy IDAnalyzer package remains the API v1 SDK).</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/idanalyzer/id-analyzer-v2-dotnet</RepositoryUrl>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
-    <Version>1.1.0</Version>
+    <AssemblyVersion>1.1.1.0</AssemblyVersion>
+    <FileVersion>1.1.1.0</FileVersion>
+    <Version>1.1.1</Version>
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
