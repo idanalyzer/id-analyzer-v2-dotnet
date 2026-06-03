@@ -13,3 +13,5 @@ docs/
 # DocFX generated output (root-level)
 /api/
 /site/
+IDAnalyzer/_api/
+IDAnalyzer/api/
