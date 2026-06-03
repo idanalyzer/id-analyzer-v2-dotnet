@@ -4,19 +4,44 @@ This is a .Net SDK for [ID Analyzer Identity Verification APIs](https://www.idan
 
 We strongly discourage users to connect to ID Analyzer API endpoint directly  from client-side applications that will be distributed to end user, such as mobile app, or in-browser JavaScript. Your API key could be easily compromised, and if you are storing your customer's information inside Vault they could use your API key to fetch all your user details. Therefore, the best practice is always to implement a client side connection to your server, and call our APIs from the server-side.
 
-## Installation (Unlisted Packages)
-Install through nuget CLI
+## Installation
+Install through the .NET CLI (the v2 SDK ships as **`IDAnalyzer.V2`** — the legacy
+`IDAnalyzer` package remains the API v1 SDK):
 
 ```shell
-
+dotnet add package IDAnalyzer.V2
 ```
-Install through Visual Studio Package Manager Console
+Install through the Visual Studio Package Manager Console
 
 ```shell
-
+Install-Package IDAnalyzer.V2
 ```
 
-Alternatively, download this package and add the project under`/IDAnalyzer` to your solution
+Alternatively, download this package and add the project under `/IDAnalyzer` to your solution.
+
+## Base URL / Region
+By default the SDK targets the US fleet (`https://api2.idanalyzer.com`). To use the
+EU fleet (`https://api2-eu.idanalyzer.com`), set the `IDANALYZER_REGION` environment
+variable to `eu`:
+
+```shell
+set IDANALYZER_REGION=eu   REM "us" (default) or "eu"
+```
+
+An unrecognized region value throws `InvalidArgumentException`.
+
+## API Coverage
+The SDK exposes the full ID Analyzer API v2 surface:
+
+- **Scanner** — `scan`, `quickScan`, `veryQuickScan`
+- **Biometric** — `verifyFace`, `verifyLiveness`
+- **AML** — `search` (`/aml`), `searchV3` (`/amlv3`)
+- **Contract** — `generate` + template CRUD
+- **Transaction** — get/list/update/delete, export, `saveImage`/`saveFile`
+- **Docupass** — `createDocupass`, `listDocupass`, `getDocupass`, `deleteDocupass`
+- **ProfileAPI** — KYC profile create/list/get/update/delete/export
+- **Webhook** — `listWebhook`, `resendWebhook`, `deleteWebhook`
+- **Account** — `getAccount` (`/myaccount`)
 
 ## Scanner
 This category supports all scanning-related functions specifically used to initiate a new identity document scan & ID face verification transaction by uploading based64-encoded images.
@@ -142,11 +167,73 @@ try {
 }
 ```
 
+## AML
+Screen names, businesses and document numbers against global sanctions / PEP / watchlists.
+```c#
+using IDAnalyzer;
+
+try {
+    var a = new AML("OlZBrUWs4F60McKKKpuLKNY01XX7sm6B");
+    a.throwApiException(true);
+    Console.WriteLine(a.search("John Smith", "", 0, "US"));   // POST /aml
+    Console.WriteLine(a.searchV3("John Smith", "", 10, 1));   // POST /amlv3
+} catch (ApiError err) {
+    Console.WriteLine($"{err.Msg} : {err.Code}");
+} catch (InvalidArgumentException err) {
+    Console.WriteLine(err.Message);
+}
+```
+
+## KYC Profiles (ProfileAPI)
+Create and manage server-side KYC profiles.
+```c#
+using IDAnalyzer;
+
+try {
+    var p = new ProfileAPI("OlZBrUWs4F60McKKKpuLKNY01XX7sm6B");
+    p.throwApiException(true);
+
+    var cfg = new Profile(Profile.SECURITY_MEDIUM);
+    cfg.decisionTrigger(1, 1);
+
+    var created = p.createProfile("My Onboarding Profile", cfg);
+    var profileId = created["profileId"].ToString();
+    p.updateProfile(profileId, "My Onboarding Profile (v2)", cfg);
+    Console.WriteLine(p.getProfile(profileId));
+    Console.WriteLine(p.listProfile());
+    p.exportProfile(profileId);
+    p.deleteProfile(profileId);
+} catch (ApiError err) {
+    Console.WriteLine($"{err.Msg} : {err.Code}");
+} catch (InvalidArgumentException err) {
+    Console.WriteLine(err.Message);
+}
+```
+
+## Webhook
+List, resend and delete webhook delivery logs.
+```c#
+using IDAnalyzer;
+
+var w = new Webhook("OlZBrUWs4F60McKKKpuLKNY01XX7sm6B");
+w.throwApiException(true);
+Console.WriteLine(w.listWebhook());
+// w.resendWebhook("<webhookId>");
+// w.deleteWebhook("<webhookId>");
+```
+
+## Account
+Retrieve account quota and usage.
+```c#
+using IDAnalyzer;
+
+var acc = new Account("OlZBrUWs4F60McKKKpuLKNY01XX7sm6B");
+acc.throwApiException(true);
+Console.WriteLine(acc.getAccount());
+```
+
 ## Api Document
 [ID Analyzer Document](https://id-analyzer-v2.readme.io/docs/net)
 
-## Demo
-Check out **/demo** folder for more .NET demos.
-
 ## SDK Reference
-Check out [ID Analyzer .NET Reference](https://idanalyzer.github.io/id-analyzer-nodejs/)
+Check out [ID Analyzer .NET Reference](https://idanalyzer.github.io/id-analyzer-v2-dotnet/)

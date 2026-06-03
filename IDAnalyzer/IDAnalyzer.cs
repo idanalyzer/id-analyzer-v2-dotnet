@@ -64,14 +64,26 @@ namespace IDAnalyzer
             var region = Environment.GetEnvironmentVariable("IDANALYZER_REGION");
             if (region == null || region == "")
             {
-                return String.Format("https://v2-us1.idanalyzer.com/{0}{1}", uri, paramStr != "" ? "?" + paramStr : "");
+                region = "us";
+            }
+            region = region.ToLower();
+
+            string baseUrl;
+            if (region == "us")
+            {
+                baseUrl = "https://api2.idanalyzer.com";
+            }
+            else if (region == "eu")
+            {
+                baseUrl = "https://api2-eu.idanalyzer.com";
+            }
+            else
+            {
+                throw new InvalidArgumentException(
+                    String.Format("Invalid IDANALYZER_REGION '{0}', valid regions are: us, eu.", region));
             }
 
-            if (region.ToLower() == "eu")
-            {
-                return String.Format("https://api2-eu.idanalyzer.com/{0}{1}", uri, paramStr != "" ? "?" + paramStr : "");
-            }
-            return String.Format("https://v2-us1.idanalyzer.com/{0}{1}", uri, paramStr != "" ? "?" + paramStr : "");
+            return String.Format("{0}/{1}{2}", baseUrl, uri, paramStr != "" ? "?" + paramStr : "");
         }
 
         public static JObject ApiExceptionHandle(HttpResponseMessage resp, bool throwError)
@@ -327,7 +339,7 @@ namespace IDAnalyzer
             {
             }
 
-            if (uri.Scheme != "http" || uri.Scheme != "https")
+            if (uri.Scheme != "http" && uri.Scheme != "https")
             {
                 throw new InvalidArgumentException("Invalid URL, only http and https protocols are allowed.");
             }
@@ -874,7 +886,7 @@ namespace IDAnalyzer
             else
             {
                 DateTime result;
-                if (DateTime.TryParseExact(dob, "yyyy/mm/dd", CultureInfo.CurrentCulture, DateTimeStyles.None,
+                if (DateTime.TryParseExact(dob, "yyyy/MM/dd", CultureInfo.InvariantCulture, DateTimeStyles.None,
                         out result))
                 {
                     this.config["verifyDob"] = dob;
@@ -1004,6 +1016,37 @@ namespace IDAnalyzer
             var resp = this.sess.PostAsync(Common.GetEndpoint("quickscan"), content).Result;
             return Common.ApiExceptionHandle(resp, this.throwError);
         }
+
+        /// <summary>
+        /// Initiate a very quick (fast) identity document OCR scan by providing input images. Faster but less thorough than quickScan, useful for high-throughput OCR-only use cases.
+        /// </summary>
+        /// <param name="documentFront">Front of Document (file path, base64 content or URL)</param>
+        /// <param name="documentBack">Back of Document (file path, base64 content or URL)</param>
+        /// <param name="cacheImage">Cache uploaded image(s) for 24 hours and obtain a cache reference for each image, the reference hash can be used to start standard scan transaction without re-uploading the file.</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidArgumentException"></exception>
+        public JObject veryQuickScan(string documentFront = "", string documentBack = "", bool cacheImage = false)
+        {
+            var payload = new Hashtable()
+        {
+            { "saveFile", cacheImage },
+        };
+
+            if (documentFront == "")
+            {
+                throw new InvalidArgumentException("Primary document image required.");
+            }
+
+            payload["document"] = Common.ParseInput(documentFront);
+            if (documentBack != "")
+            {
+                payload["documentBack"] = Common.ParseInput(documentBack);
+            }
+
+            var content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
+            var resp = this.sess.PostAsync(Common.GetEndpoint("veryquickscan"), content).Result;
+            return Common.ApiExceptionHandle(resp, this.throwError);
+        }
     }
 
     public class Transaction : ApiParent
@@ -1113,7 +1156,7 @@ namespace IDAnalyzer
                 throw new InvalidArgumentException("Transaction ID required.");
             }
 
-            if (decision != "accept" && decision != "review" && decision == "reject")
+            if (decision != "accept" && decision != "review" && decision != "reject")
             {
                 throw new InvalidArgumentException("'decision' should be either accept, review or reject.");
             }
@@ -1402,6 +1445,243 @@ namespace IDAnalyzer
                 throw new InvalidArgumentException("'reference' is required.");
 
             var resp = this.sess.DeleteAsync(Common.GetEndpoint(String.Format("docupass/{0}", reference))).Result;
+            return Common.ApiExceptionHandle(resp, this.throwError);
+        }
+
+        /// <summary>
+        /// Retrieve a single Docupass record by reference.
+        /// </summary>
+        /// <param name="reference">Docupass reference ID</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidArgumentException"></exception>
+        public JObject getDocupass(string reference = "")
+        {
+            if (reference == "")
+                throw new InvalidArgumentException("'reference' is required.");
+
+            var resp = this.sess.GetAsync(Common.GetEndpoint(String.Format("docupass/{0}", reference))).Result;
+            return Common.ApiExceptionHandle(resp, this.throwError);
+        }
+    }
+
+    public class AML : ApiParent
+    {
+        public AML(string? apiKey = null) : base(apiKey)
+        {
+        }
+
+        /// <summary>
+        /// Search the AML database (v1 endpoint).
+        /// </summary>
+        /// <param name="name">Search AML database with person's name or business name</param>
+        /// <param name="idNumber">Search AML database with document number</param>
+        /// <param name="entity">0=Person, 1=Corporation/Legal Entity</param>
+        /// <param name="country">Two digit ISO country code to filter by country/nationality</param>
+        /// <param name="database">Optional list of databases to search, e.g. ["us_ofac","eu_fsf"]. If null all databases are searched.</param>
+        /// <param name="birthYear">Filter by year of birth</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidArgumentException"></exception>
+        public JObject search(string name = "", string idNumber = "", int entity = 0, string country = "",
+            string[]? database = null, string birthYear = "")
+        {
+            if (name == "" && idNumber == "")
+            {
+                throw new InvalidArgumentException("Either 'name' or 'idNumber' is required.");
+            }
+
+            var payload = new Hashtable()
+        {
+            { "entity", entity },
+        };
+            if (name != "") payload["name"] = name;
+            if (idNumber != "") payload["idNumber"] = idNumber;
+            if (country != "") payload["country"] = country;
+            if (birthYear != "") payload["birthYear"] = birthYear;
+            if (database != null && database.Length > 0) payload["database"] = database;
+
+            var content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
+            var resp = this.sess.PostAsync(Common.GetEndpoint("aml"), content).Result;
+            return Common.ApiExceptionHandle(resp, this.throwError);
+        }
+
+        /// <summary>
+        /// Search the AML database (v3 endpoint). Provide either a free-text query or one or more entity IDs.
+        /// </summary>
+        /// <param name="text">Full-text query (name, alias, document/passport/tax/registration number, etc.)</param>
+        /// <param name="id">One or more AML entity IDs separated by comma or newline (max 50)</param>
+        /// <param name="limit">Number of results to return per page</param>
+        /// <param name="page">Result page number</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidArgumentException"></exception>
+        public JObject searchV3(string text = "", string id = "", int limit = 0, int page = 0)
+        {
+            if (text == "" && id == "")
+            {
+                throw new InvalidArgumentException("Either 'text' or 'id' is required.");
+            }
+
+            var payload = new Hashtable() { };
+            if (text != "") payload["text"] = text;
+            if (id != "") payload["id"] = id;
+            if (limit > 0) payload["limit"] = limit;
+            if (page > 0) payload["page"] = page;
+
+            var content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
+            var resp = this.sess.PostAsync(Common.GetEndpoint("amlv3"), content).Result;
+            return Common.ApiExceptionHandle(resp, this.throwError);
+        }
+    }
+
+    public class ProfileAPI : ApiParent
+    {
+        public ProfileAPI(string? apiKey = null) : base(apiKey)
+        {
+        }
+
+        private static Hashtable ProfileBody(string name, object? profile)
+        {
+            var body = new Hashtable();
+            if (name != "") body["name"] = name;
+            if (profile != null)
+            {
+                if (profile is Profile p)
+                {
+                    foreach (DictionaryEntry kv in p.profileOverride)
+                    {
+                        body[kv.Key] = kv.Value;
+                    }
+                }
+                else if (profile is Hashtable ht)
+                {
+                    foreach (DictionaryEntry kv in ht)
+                    {
+                        body[kv.Key] = kv.Value;
+                    }
+                }
+                else
+                {
+                    throw new InvalidArgumentException("'profile' should be a Profile object or Hashtable.");
+                }
+            }
+            return body;
+        }
+
+        /// <summary>List KYC profiles.</summary>
+        public JObject listProfile(int order = -1, int limit = 10, int offset = 0)
+        {
+            if (order != 1 && order != -1)
+            {
+                throw new InvalidArgumentException("'order' should be integer of 1 or -1.");
+            }
+
+            var payload = new Hashtable()
+        {
+            { "order", order },
+            { "limit", limit },
+            { "offset", offset },
+        };
+            var resp = this.sess.GetAsync(Common.GetEndpoint("profile", payload)).Result;
+            return Common.ApiExceptionHandle(resp, this.throwError);
+        }
+
+        /// <summary>Retrieve a single KYC profile.</summary>
+        public JObject getProfile(string profileId = "")
+        {
+            if (profileId == "") throw new InvalidArgumentException("'profileId' required.");
+            var resp = this.sess.GetAsync(Common.GetEndpoint(String.Format("profile/{0}", profileId))).Result;
+            return Common.ApiExceptionHandle(resp, this.throwError);
+        }
+
+        /// <summary>Create a new KYC profile.</summary>
+        /// <param name="name">Profile name</param>
+        /// <param name="profile">A Profile object (its overrides become the profile config) or a Hashtable</param>
+        public JObject createProfile(string name = "", object? profile = null)
+        {
+            if (name == "") throw new InvalidArgumentException("Profile name required.");
+            var content = new StringContent(JsonConvert.SerializeObject(ProfileBody(name, profile)), Encoding.UTF8, "application/json");
+            var resp = this.sess.PostAsync(Common.GetEndpoint("profile"), content).Result;
+            return Common.ApiExceptionHandle(resp, this.throwError);
+        }
+
+        /// <summary>Update an existing KYC profile.</summary>
+        public JObject updateProfile(string profileId = "", string name = "", object? profile = null)
+        {
+            if (profileId == "") throw new InvalidArgumentException("'profileId' required.");
+            var content = new StringContent(JsonConvert.SerializeObject(ProfileBody(name, profile)), Encoding.UTF8, "application/json");
+            var resp = this.sess.PutAsync(Common.GetEndpoint(String.Format("profile/{0}", profileId)), content).Result;
+            return Common.ApiExceptionHandle(resp, this.throwError);
+        }
+
+        /// <summary>Delete a KYC profile.</summary>
+        public JObject deleteProfile(string profileId = "")
+        {
+            if (profileId == "") throw new InvalidArgumentException("'profileId' required.");
+            var resp = this.sess.DeleteAsync(Common.GetEndpoint(String.Format("profile/{0}", profileId))).Result;
+            return Common.ApiExceptionHandle(resp, this.throwError);
+        }
+
+        /// <summary>Export a KYC profile (GET /export/profile/{id}).</summary>
+        public JObject exportProfile(string profileId = "")
+        {
+            if (profileId == "") throw new InvalidArgumentException("'profileId' required.");
+            var resp = this.sess.GetAsync(Common.GetEndpoint(String.Format("export/profile/{0}", profileId))).Result;
+            return Common.ApiExceptionHandle(resp, this.throwError);
+        }
+    }
+
+    public class Webhook : ApiParent
+    {
+        public Webhook(string? apiKey = null) : base(apiKey)
+        {
+        }
+
+        /// <summary>List webhook delivery logs.</summary>
+        public JObject listWebhook(int order = -1, int limit = 10, int offset = 0, string ev = "",
+            int success = -1, string createdAtMin = "", string createdAtMax = "")
+        {
+            var payload = new Hashtable()
+        {
+            { "order", order },
+            { "limit", limit },
+            { "offset", offset },
+        };
+            if (ev != "") payload["event"] = ev;
+            if (success == 0 || success == 1) payload["success"] = success;
+            if (createdAtMin != "") payload["createdAtMin"] = createdAtMin;
+            if (createdAtMax != "") payload["createdAtMax"] = createdAtMax;
+
+            var resp = this.sess.GetAsync(Common.GetEndpoint("webhook", payload)).Result;
+            return Common.ApiExceptionHandle(resp, this.throwError);
+        }
+
+        /// <summary>Resend a webhook delivery.</summary>
+        public JObject resendWebhook(string webhookId = "")
+        {
+            if (webhookId == "") throw new InvalidArgumentException("'webhookId' required.");
+            var content = new StringContent("{}", Encoding.UTF8, "application/json");
+            var resp = this.sess.PostAsync(Common.GetEndpoint(String.Format("webhook/{0}", webhookId)), content).Result;
+            return Common.ApiExceptionHandle(resp, this.throwError);
+        }
+
+        /// <summary>Delete a webhook delivery log.</summary>
+        public JObject deleteWebhook(string webhookId = "")
+        {
+            if (webhookId == "") throw new InvalidArgumentException("'webhookId' required.");
+            var resp = this.sess.DeleteAsync(Common.GetEndpoint(String.Format("webhook/{0}", webhookId))).Result;
+            return Common.ApiExceptionHandle(resp, this.throwError);
+        }
+    }
+
+    public class Account : ApiParent
+    {
+        public Account(string? apiKey = null) : base(apiKey)
+        {
+        }
+
+        /// <summary>Retrieve current account profile, quota and usage.</summary>
+        public JObject getAccount()
+        {
+            var resp = this.sess.GetAsync(Common.GetEndpoint("myaccount")).Result;
             return Common.ApiExceptionHandle(resp, this.throwError);
         }
     }
