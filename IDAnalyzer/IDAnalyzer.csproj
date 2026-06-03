@@ -28,6 +28,7 @@ Fixed updateTransaction decision validation and Profile.webhook protocol guard.<
     <Version>1.1.2</Version>
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
