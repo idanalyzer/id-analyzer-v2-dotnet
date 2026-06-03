@@ -1,9 +1,11 @@
 name: Publish to NuGet
 
 # Publishes IDAnalyzer.V2 to nuget.org when a version tag (v*) is pushed.
-# Requires a repo/org secret NUGET_API_KEY (create on nuget.org under the
-# `idanalyzer` organization, Push scope, glob "IDAnalyzer.*").
-# NuGet does not yet support OIDC trusted publishing, so an API key is used.
+# Uses NuGet Trusted Publishing (OIDC) — no API key stored.
+# Configure the policy on nuget.org (Trusted Publishing): Package Owner=idanalyzer,
+# Repository Owner=idanalyzer, Repository=id-analyzer-v2-dotnet, Workflow File=publish.yml,
+# Environment=(blank). Set the Actions variable NUGET_USER to the nuget.org username
+# that owns the policy.
 
 on:
   push:
@@ -13,6 +15,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write   # required for OIDC trusted publishing
 
 jobs:
   publish:
@@ -27,9 +30,15 @@ jobs:
       - name: Pack
         run: dotnet pack IDAnalyzer/IDAnalyzer.csproj -c Release -o artifacts
 
+      - name: NuGet trusted-publishing login (OIDC)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ vars.NUGET_USER }}
+
       - name: Push to NuGet
         run: >
           dotnet nuget push "artifacts/*.nupkg"
-          --api-key "${{ secrets.NUGET_API_KEY }}"
+          --api-key "${{ steps.login.outputs.NUGET_API_KEY }}"
           --source https://api.nuget.org/v3/index.json
           --skip-duplicate
