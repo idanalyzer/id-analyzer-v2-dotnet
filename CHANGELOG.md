@@ -5,7 +5,7 @@
 Full API v2 surface parity, bug fixes, and a dedicated v2 NuGet package id.
 
 ### Packaging
-- **Now published as `IDAnalyzer.V2`** on NuGet. The legacy `IDAnalyzer` package id
+- **Now published as `IDAnalyzerV2`** on NuGet. The legacy `IDAnalyzer` package id
   remains the **API v1** SDK — this avoids silently overwriting v1 consumers.
 - Bumped `Newtonsoft.Json` 12.0.3 → 13.0.3; removed the build-fragile `docfx.console`
   dependency and the missing `appicon.png` package-icon reference.

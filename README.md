@@ -1,7 +1,7 @@
 # ID Analyzer .NET SDK — Identity Verification, KYC, Document & Biometric API
 
-[![NuGet version](https://img.shields.io/nuget/v/IDAnalyzer.V2.svg)](https://www.nuget.org/packages/IDAnalyzer.V2)
-[![NuGet downloads](https://img.shields.io/nuget/dt/IDAnalyzer.V2.svg)](https://www.nuget.org/packages/IDAnalyzer.V2)
+[![NuGet version](https://img.shields.io/nuget/v/IDAnalyzerV2.svg)](https://www.nuget.org/packages/IDAnalyzerV2)
+[![NuGet downloads](https://img.shields.io/nuget/dt/IDAnalyzerV2.svg)](https://www.nuget.org/packages/IDAnalyzerV2)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Official .NET / C# client library for the **[ID Analyzer](https://www.idanalyzer.com) API v2** — automate identity document verification, KYC onboarding and biometric checks in minutes.
@@ -26,10 +26,10 @@ Scan and authenticate **passports, driver's licenses, ID cards, visas and reside
 
 ## Installation
 
-The v2 SDK ships as **`IDAnalyzer.V2`** (the legacy `IDAnalyzer` package id remains the API v1 SDK):
+The v2 SDK ships as **`IDAnalyzerV2`** (the legacy `IDAnalyzer` package id remains the API v1 SDK):
 
 ```bash
-dotnet add package IDAnalyzer.V2
+dotnet add package IDAnalyzerV2
 ```
 
 Targets .NET Standard 2.1 (works with .NET Core 3.x, .NET 5/6/8+).

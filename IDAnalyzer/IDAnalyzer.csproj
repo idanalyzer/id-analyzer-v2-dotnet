@@ -2,27 +2,30 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <PackageId>IDAnalyzer.V2</PackageId>
+    <PackageId>IDAnalyzerV2</PackageId>
     <Authors>IDAnalyzer.com</Authors>
     <Company>Evith Information Technology Ltd.</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README_NUGET.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://www.idanalyzer.com</PackageProjectUrl>
     <Product>ID Analyzer .NET SDK (API v2)</Product>
-    <Description>.NET client library for the ID Analyzer API v2. Scan and validate driver license, passport and ID card from any country, perform face/liveness biometric verification, AML/PEP screening, DocuPass remote verification and e-signature, KYC profile management and contract generation. Targets the api2.idanalyzer.com fleet.</Description>
+    <Description>.NET client library for the ID Analyzer API v2. Scan and validate driver license, passport and ID card from any country, perform face/liveness biometric verification, AML/PEP screening, DocuPass remote verification and e-signature, KYC profile management and contract generation.</Description>
     <Copyright>(C) 2026 IDAnalyzer.com</Copyright>
     <PackageTags>id analyzer,passport,driver license,id card,identity verification,id verification,id ocr,pdf417,mrz,aamva,aml,pep,signature,sign document online</PackageTags>
-    <PackageReleaseNotes>1.1.0
+    <PackageReleaseNotes>1.1.2
 
+Added package icon. No functional changes.
+
+1.1.0
 Full API v2 surface parity (veryquickscan, aml, amlv3, KYC profile CRUD, webhook management, account, single-docupass get).
-Base URL now defaults to the load-balanced api2.idanalyzer.com (was the single-node v2-us1.idanalyzer.com); unknown IDANALYZER_REGION now throws.
-Fixed updateTransaction decision validation and Profile.webhook protocol guard.
-Published under the new package id IDAnalyzer.V2 (the legacy IDAnalyzer package remains the API v1 SDK).</PackageReleaseNotes>
+Base URL now defaults to api2.idanalyzer.com; unknown IDANALYZER_REGION now throws.
+Fixed updateTransaction decision validation and Profile.webhook protocol guard.</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/idanalyzer/id-analyzer-v2-dotnet</RepositoryUrl>
-    <AssemblyVersion>1.1.1.0</AssemblyVersion>
-    <FileVersion>1.1.1.0</FileVersion>
-    <Version>1.1.1</Version>
+    <AssemblyVersion>1.1.2.0</AssemblyVersion>
+    <FileVersion>1.1.2.0</FileVersion>
+    <Version>1.1.2</Version>
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -33,6 +36,7 @@ Published under the new package id IDAnalyzer.V2 (the legacy IDAnalyzer package 
 
   <ItemGroup>
     <None Include="..\README_NUGET.md" Pack="true" PackagePath="\" />
+    <None Include="..\icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
