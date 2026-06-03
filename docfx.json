@@ -1,0 +1,13 @@
+{
+  "metadata": [{ "src": [{ "files": ["IDAnalyzer/IDAnalyzer.csproj"] }], "dest": "api" }],
+  "build": {
+    "content": [
+      { "files": ["api/**.yml", "api/index.md"] },
+      { "files": ["index.md", "toc.yml"] }
+    ],
+    "dest": "site",
+    "template": ["default", "modern"],
+    "globalMetadata": { "_appName": "ID Analyzer .NET (API v2)", "_appTitle": "ID Analyzer .NET (API v2)", "_enableSearch": true },
+    "postProcessors": ["ExtractSearchIndex"]
+  }
+}
