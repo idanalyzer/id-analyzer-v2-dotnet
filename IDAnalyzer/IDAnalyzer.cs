@@ -12,8 +12,18 @@ using System.Net;
 
 namespace IDAnalyzer
 {
+    /// <summary>
+    /// Internal helper utilities shared by the SDK: input image parsing, API endpoint resolution and API error handling.
+    /// </summary>
     public class Common
     {
+        /// <summary>
+        /// Normalize an input image into a value accepted by the API. URLs and (when allowed) cache references are passed through unchanged, local file paths are read and base64-encoded, and long strings are assumed to already be base64 content.
+        /// </summary>
+        /// <param name="str">Input image as a file path, http(s) URL, base64 content, or (when <paramref name="allowCache"/> is true) a "ref:" cache reference.</param>
+        /// <param name="allowCache">When true, a value beginning with "ref:" is treated as a cache reference and returned unchanged.</param>
+        /// <returns>A URL, cache reference, or base64-encoded image string suitable for use in an API request payload.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the input is not a valid URL, the file does not exist, and the string is too short to be image content.</exception>
         public static string ParseInput(string str, bool allowCache = false)
         {
             if (allowCache && str.Substring(0, 4) == "ref:")
@@ -44,6 +54,13 @@ namespace IDAnalyzer
             throw new InvalidArgumentException("Invalid input image, file not found or malformed URL.");
         }
 
+        /// <summary>
+        /// Build a full API endpoint URL from a relative path (or pass an absolute URL through unchanged), resolving the API region base URL from the IDANALYZER_REGION environment variable and appending any query parameters.
+        /// </summary>
+        /// <param name="uri">A relative API path (e.g. "scan") or an absolute http(s) URL which is returned unchanged.</param>
+        /// <param name="parameters">Optional query string parameters appended to the URL as key=value pairs.</param>
+        /// <returns>The fully-qualified endpoint URL.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when IDANALYZER_REGION is set to a value other than "us" or "eu".</exception>
         public static string GetEndpoint(string uri, Hashtable? parameters = null)
         {
             string paramStr = "";
@@ -86,6 +103,13 @@ namespace IDAnalyzer
             return String.Format("{0}/{1}{2}", baseUrl, uri, paramStr != "" ? "?" + paramStr : "");
         }
 
+        /// <summary>
+        /// Parse an API HTTP response body into a JSON object and, optionally, raise an exception when the response contains an API error.
+        /// </summary>
+        /// <param name="resp">The HTTP response returned by the API.</param>
+        /// <param name="throwError">When true, an <see cref="ApiError"/> is thrown if the response body contains an "error" object.</param>
+        /// <returns>The parsed API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="ApiError">Thrown when <paramref name="throwError"/> is true and the API response contains an error.</exception>
         public static JObject ApiExceptionHandle(HttpResponseMessage resp, bool throwError)
         {
             var result = JObject.Parse(resp.Content.ReadAsStringAsync().Result);
@@ -97,19 +121,31 @@ namespace IDAnalyzer
         }
     }
 
+    /// <summary>
+    /// Base class for all API clients. Handles API key resolution, the shared HTTP session, request configuration and the throw-on-error toggle.
+    /// </summary>
     public class ApiParent
     {
+        /// <summary>The resolved API key used to authenticate requests.</summary>
         protected string? apiKey = null;
+
+        /// <summary>Client library identifier sent with every request.</summary>
         protected string client_lib = "csharp-sdk";
+
+        /// <summary>Accumulated request configuration / payload parameters.</summary>
         protected Hashtable config = new Hashtable();
+
+        /// <summary>Whether an <see cref="ApiError"/> is thrown when the API returns an error.</summary>
         protected bool throwError = false;
+
+        /// <summary>The shared HTTP client used to send API requests.</summary>
         protected HttpClient sess = new HttpClient();
 
         /// <summary>
-        /// 
+        /// Initialize the API client, resolving the API key from the provided value or the IDANALYZER_KEY environment variable and configuring the HTTP session.
         /// </summary>
-        /// <param name="apiKey">You API key</param>
-        /// <exception cref="Exception">Please set API key via environment variable 'IDANALYZER_KEY'</exception>
+        /// <param name="apiKey">Your API key. If null, the IDANALYZER_KEY environment variable is used.</param>
+        /// <exception cref="Exception">Thrown when no API key can be resolved from the argument or the IDANALYZER_KEY environment variable.</exception>
         public ApiParent(string? apiKey = null)
         {
             this.apiKey = this.getApiKey(apiKey);
@@ -122,6 +158,11 @@ namespace IDAnalyzer
             this.sess.DefaultRequestHeaders.Add("X-Api-Key", this.apiKey);
         }
 
+        /// <summary>
+        /// Resolve the API key, preferring the provided value and falling back to the IDANALYZER_KEY environment variable.
+        /// </summary>
+        /// <param name="apiKey">An explicit API key, or null to read from the environment.</param>
+        /// <returns>The resolved API key, or null if none is available.</returns>
         protected string? getApiKey(string? apiKey = null)
         {
             return apiKey ?? Environment.GetEnvironmentVariable("IDANALYZER_KEY");
@@ -147,17 +188,30 @@ namespace IDAnalyzer
         }
     }
 
+    /// <summary>
+    /// Represents a KYC validation profile. Use a preset (security_none/low/medium/high) or a custom profile ID, and optionally override individual settings before passing it to a scan, biometric or Docupass call.
+    /// </summary>
     public class Profile
     {
+        /// <summary>Preset profile ID that applies no validation security.</summary>
         public static string SECURITY_NONE = "security_none";
+
+        /// <summary>Preset profile ID that applies low validation security.</summary>
         public static string SECURITY_LOW = "security_low";
+
+        /// <summary>Preset profile ID that applies medium validation security.</summary>
         public static string SECURITY_MEDIUM = "security_medium";
+
+        /// <summary>Preset profile ID that applies high validation security.</summary>
         public static string SECURITY_HIGH = "security_high";
 
         private string URL_VALIDATION_REGEX =
             "((?:[a-z][\\w-]+:(?:/{1,3}|[a-z0-9%])|www\\d{0,3}[.]|[a-z0-9.\\-]+[.][a-z]{2,4}/)(?:[^\\s()<>]+|\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\))+(?:\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[\\]{};:'\".,<>?«»“”‘’]))";
 
+        /// <summary>The profile ID (custom ID or one of the preset security levels) sent to the API.</summary>
         public string profileId = "";
+
+        /// <summary>Per-call override settings layered on top of the base profile.</summary>
         public Hashtable profileOverride = new Hashtable();
 
         /// <summary>
@@ -183,7 +237,7 @@ namespace IDAnalyzer
         /// <summary>
         /// Canvas Size in pixels, input image larger than this size will be scaled down before further processing, reduced image size will improve inference time but reduce result accuracy. Set 0 to disable image resizing.
         /// </summary>
-        /// <param name="pixels"></param>
+        /// <param name="pixels">Maximum canvas size in pixels; set 0 to disable image resizing.</param>
         public void canvasSize(int pixels)
         {
             this.profileOverride["canvasSize"] = pixels;
@@ -192,7 +246,7 @@ namespace IDAnalyzer
         /// <summary>
         /// Correct image orientation for rotated images
         /// </summary>
-        /// <param name="enabled"></param>
+        /// <param name="enabled">True to enable automatic orientation correction.</param>
         public void orientationCorrection(bool enabled)
         {
             this.profileOverride["orientationCorrection"] = enabled;
@@ -201,7 +255,7 @@ namespace IDAnalyzer
         /// <summary>
         /// Enable to automatically detect and return the locations of signature, document and face.
         /// </summary>
-        /// <param name="enabled"></param>
+        /// <param name="enabled">True to enable object detection.</param>
         public void objectDetection(bool enabled)
         {
             this.profileOverride["objectDetection"] = enabled;
@@ -210,7 +264,7 @@ namespace IDAnalyzer
         /// <summary>
         /// Enable to parse AAMVA barcode for US/CA ID/DL. Disable this to improve performance if you are not planning on scanning ID/DL from US or Canada.
         /// </summary>
-        /// <param name="enabled"></param>
+        /// <param name="enabled">True to enable AAMVA barcode parsing.</param>
         public void AAMVABarcodeParsing(bool enabled)
         {
             this.profileOverride["AAMVABarcodeParsing"] = enabled;
@@ -219,8 +273,8 @@ namespace IDAnalyzer
         /// <summary>
         /// Whether scan transaction results and output images should be saved on cloud
         /// </summary>
-        /// <param name="enableSaveTransaction"></param>
-        /// <param name="enableSaveTransactionImages"></param>
+        /// <param name="enableSaveTransaction">True to save the transaction result on the cloud.</param>
+        /// <param name="enableSaveTransactionImages">True to also save the transaction output images on the cloud.</param>
         public void saveResult(bool enableSaveTransaction, bool enableSaveTransactionImages)
         {
             this.profileOverride["saveResult"] = enableSaveTransaction;
@@ -233,8 +287,8 @@ namespace IDAnalyzer
         /// <summary>
         /// Whether to return output image as part of API response
         /// </summary>
-        /// <param name="enableOutputImage"></param>
-        /// <param name="outputFormat"></param>
+        /// <param name="enableOutputImage">True to return the output image in the API response.</param>
+        /// <param name="outputFormat">Output image format, "url" or "base64".</param>
         public void outputImage(bool enableOutputImage, string outputFormat = "url")
         {
             this.profileOverride["outputImage"] = enableOutputImage;
@@ -247,8 +301,8 @@ namespace IDAnalyzer
         /// <summary>
         /// Crop image before saving and returning output
         /// </summary>
-        /// <param name="enableAutoCrop"></param>
-        /// <param name="enableAdvancedAutoCrop"></param>
+        /// <param name="enableAutoCrop">True to automatically crop the document from the image.</param>
+        /// <param name="enableAdvancedAutoCrop">True to enable advanced auto-cropping.</param>
         public void autoCrop(bool enableAutoCrop, bool enableAdvancedAutoCrop)
         {
             this.profileOverride["crop"] = enableAutoCrop;
@@ -258,7 +312,7 @@ namespace IDAnalyzer
         /// <summary>
         /// Maximum width/height in pixels for output and saved image.
         /// </summary>
-        /// <param name="pixels"></param>
+        /// <param name="pixels">Maximum output image width/height in pixels.</param>
         public void outputSize(int pixels)
         {
             this.profileOverride["outputSize"] = pixels;
@@ -267,7 +321,7 @@ namespace IDAnalyzer
         /// <summary>
         /// Generate a full name field using parsed first name, middle name and last name.
         /// </summary>
-        /// <param name="enabled"></param>
+        /// <param name="enabled">True to infer and populate the full name field.</param>
         public void inferFullName(bool enabled)
         {
             this.profileOverride["inferFullName"] = enabled;
@@ -276,7 +330,7 @@ namespace IDAnalyzer
         /// <summary>
         /// If first name contains more than one word, move second word onwards into middle name field.
         /// </summary>
-        /// <param name="enabled"></param>
+        /// <param name="enabled">True to split a multi-word first name into first and middle name fields.</param>
         public void splitFirstName(bool enabled)
         {
             this.profileOverride["splitFirstName"] = enabled;
@@ -285,7 +339,7 @@ namespace IDAnalyzer
         /// <summary>
         /// Enable to generate a detailed PDF audit report for every transaction.
         /// </summary>
-        /// <param name="enabled"></param>
+        /// <param name="enabled">True to generate a PDF audit report for each transaction.</param>
         public void transactionAuditReport(bool enabled)
         {
             this.profileOverride["transactionAuditReport"] = enabled;
@@ -294,16 +348,16 @@ namespace IDAnalyzer
         /// <summary>
         /// Set timezone for audit reports. If left blank, UTC will be used. Refer to https://en.wikipedia.org/wiki/List_of_tz_database_time_zones TZ database name list.
         /// </summary>
-        /// <param name="timezone"></param>
+        /// <param name="timezone">TZ database timezone name (e.g. "America/New_York"); blank uses UTC.</param>
         public void setTimezone(string timezone)
         {
             this.profileOverride["timezone"] = timezone;
         }
 
         /// <summary>
-        /// A list of data fields key to be redacted before transaction storage, these fields will also be blurred from output & saved image.
+        /// A list of data field keys to be redacted before transaction storage, these fields will also be blurred from output and saved image.
         /// </summary>
-        /// <param name="fieldKeys"></param>
+        /// <param name="fieldKeys">Array of data field keys to redact and blur.</param>
         public void obscure(string[] fieldKeys)
         {
             this.profileOverride["obscure"] = fieldKeys;
@@ -312,8 +366,8 @@ namespace IDAnalyzer
         /// <summary>
         /// Enter a server URL to listen for Docupass verification and scan transaction results
         /// </summary>
-        /// <param name="url"></param>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <param name="url">Publicly reachable http(s) webhook URL to receive transaction results.</param>
+        /// <exception cref="InvalidArgumentException">Thrown when the URL is malformed, points to localhost, or uses a protocol other than http/https.</exception>
         public void webhook(string url = "https://www.example.com/webhook.php")
         {
             Uri uri;
@@ -350,8 +404,8 @@ namespace IDAnalyzer
         /// <summary>
         /// Set validation threshold of a specified component
         /// </summary>
-        /// <param name="thresholdKey"></param>
-        /// <param name="thresholdValue"></param>
+        /// <param name="thresholdKey">The threshold component key to set.</param>
+        /// <param name="thresholdValue">The threshold value to apply to the component.</param>
         public void threshold(string thresholdKey, double thresholdValue)
         {
             if (!this.profileOverride.Contains("thresholds"))
@@ -444,8 +498,15 @@ namespace IDAnalyzer
         }
     }
 
+    /// <summary>
+    /// Client for biometric verification: 1:1 face verification and standalone liveness checks.
+    /// </summary>
     public class Biometric : ApiParent
     {
+        /// <summary>
+        /// Initialize the Biometric client.
+        /// </summary>
+        /// <param name="apiKey">Your API key. If null, the IDANALYZER_KEY environment variable is used.</param>
         public Biometric(string? apiKey = null) : base(apiKey)
         {
             this.config["profile"] = "";
@@ -456,7 +517,7 @@ namespace IDAnalyzer
         /// <summary>
         /// Set an arbitrary string you wish to save with the transaction. e.g Internal customer reference number
         /// </summary>
-        /// <param name="customData"></param>
+        /// <param name="customData">Arbitrary string to store with the transaction.</param>
         public void setCustomData(string customData)
         {
             this.config["customData"] = customData;
@@ -466,7 +527,7 @@ namespace IDAnalyzer
         /// Set KYC Profile
         /// </summary>
         /// <param name="profile">KYCProfile object</param>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <exception cref="InvalidArgumentException">Thrown when the provided object is not a <see cref="Profile"/>.</exception>
         public void setProfile(object? profile)
         {
             if (profile is Profile)
@@ -494,8 +555,8 @@ namespace IDAnalyzer
         /// <param name="referenceFaceImage">Front of Document (file path, base64 content, url, or cache reference)</param>
         /// <param name="facePhoto">Face Photo (file path, base64 content or URL, or cache reference)</param>
         /// <param name="faceVideo">Face Video (file path, base64 content or URL)</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when no KYC profile is set, the reference image is missing, or neither a face photo nor face video is provided.</exception>
         public JObject verifyFace(string referenceFaceImage, string facePhoto, string faceVideo = "")
         {
             if ((string)this.config["profile"] == "")
@@ -532,8 +593,8 @@ namespace IDAnalyzer
         /// </summary>
         /// <param name="facePhoto">Face Photo (file path, base64 content or URL, or cache reference)</param>
         /// <param name="faceVideo">Face Video (file path, base64 content or URL)</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when no KYC profile is set, or neither a face photo nor face video is provided.</exception>
         public JObject verifyLiveness(string facePhoto = "", string faceVideo = "")
         {
             if ((string)this.config["profile"] == "")
@@ -563,8 +624,15 @@ namespace IDAnalyzer
         }
     }
 
+    /// <summary>
+    /// Client for managing contract templates and generating documents from them.
+    /// </summary>
     public class Contract : ApiParent
     {
+        /// <summary>
+        /// Initialize the Contract client.
+        /// </summary>
+        /// <param name="apiKey">Your API key. If null, the IDANALYZER_KEY environment variable is used.</param>
         public Contract(string? apiKey = null) : base(apiKey)
         {
         }
@@ -576,8 +644,8 @@ namespace IDAnalyzer
         /// <param name="format">PDF, DOCX or HTML</param>
         /// <param name="transactionId">Fill the template with data from specified transaction</param>
         /// <param name="fillData">Array data in key-value pairs to autofill dynamic fields, data from user ID will be used first in case of a conflict. For example, passing {"myparameter":"abc"} would fill %{myparameter} in contract template with "abc".</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the template ID is empty.</exception>
         public JObject generate(string templateId, string format = "PDF", string transactionId = "",
             Hashtable? fillData = null)
         {
@@ -618,8 +686,8 @@ namespace IDAnalyzer
         /// <param name="limit">Number of items to be returned per call</param>
         /// <param name="offset">Start the list from a particular entry index</param>
         /// <param name="filterTemplateId">Filter result by template ID</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when 'order' is not 1 or -1, or 'limit' is outside the range 1-100.</exception>
         public JObject listTemplate(int order = -1, int limit = 10, int offset = 0, string filterTemplateId = "")
         {
             if (order != 1 && order != -1)
@@ -653,8 +721,8 @@ namespace IDAnalyzer
         /// Get contract template
         /// </summary>
         /// <param name="templateId">Template ID</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the template ID is empty.</exception>
         public JObject getTemplate(string templateId = "")
         {
             if (templateId == "")
@@ -670,8 +738,8 @@ namespace IDAnalyzer
         /// Delete contract template
         /// </summary>
         /// <param name="templateId">Template ID</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the template ID is empty.</exception>
         public JObject deleteTemplate(string templateId = "")
         {
             if (templateId == "")
@@ -691,8 +759,8 @@ namespace IDAnalyzer
         /// <param name="orientation">0=Portrait(Default) 1=Landscape</param>
         /// <param name="timezone">Template timezone</param>
         /// <param name="font">Template font</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the template name or content is empty.</exception>
         public JObject createTemplate(string name = "", string _content = "", string orientation = "",
             string timezone = "UTC", string font = "Open Sans")
         {
@@ -728,8 +796,8 @@ namespace IDAnalyzer
         /// <param name="orientation">0=Portrait(Default) 1=Landscape</param>
         /// <param name="timezone">Template timezone</param>
         /// <param name="font">Template font</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the template ID, name or content is empty.</exception>
         public JObject updateTemplate(string templateId = "", string name = "", string _content = "",
             string orientation = "0", string timezone = "UTC", string font = "Open Sans")
         {
@@ -763,8 +831,15 @@ namespace IDAnalyzer
         }
     }
 
+    /// <summary>
+    /// Client for scanning identity documents (full scan, quick scan and very-quick OCR scan) and configuring related verification options.
+    /// </summary>
     public class Scanner : ApiParent
     {
+        /// <summary>
+        /// Initialize the Scanner client.
+        /// </summary>
+        /// <param name="apiKey">Your API key. If null, the IDANALYZER_KEY environment variable is used.</param>
         public Scanner(string? apiKey = null) : base(apiKey)
         {
             this.config["document"] = "";
@@ -789,7 +864,7 @@ namespace IDAnalyzer
         /// <summary>
         /// Pass in user IP address to check if ID is issued from the same country as the IP address, if no value is provided http connection IP will be used.
         /// </summary>
-        /// <param name="ip"></param>
+        /// <param name="ip">The user's IP address.</param>
         public void setUserIp(string ip)
         {
             this.config["ip"] = ip;
@@ -798,7 +873,7 @@ namespace IDAnalyzer
         /// <summary>
         /// Set an arbitrary string you wish to save with the transaction. e.g Internal customer reference number
         /// </summary>
-        /// <param name="customData"></param>
+        /// <param name="customData">Arbitrary string to store with the transaction.</param>
         public void setCustomData(string customData)
         {
             this.config["customData"] = customData;
@@ -842,7 +917,7 @@ namespace IDAnalyzer
         /// Set KYC Profile
         /// </summary>
         /// <param name="profile">KYCProfile object</param>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <exception cref="InvalidArgumentException">Thrown when the provided object is not a <see cref="Profile"/>.</exception>
         public void setProfile(object? profile)
         {
             if (profile is Profile)
@@ -873,7 +948,7 @@ namespace IDAnalyzer
         /// <param name="ageRange">Age range, example: 18-40</param>
         /// <param name="address">Address</param>
         /// <param name="postcode">Postcode</param>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <exception cref="InvalidArgumentException">Thrown when the date of birth is not in YYYY/MM/DD format or the age range is not in minAge-maxAge format.</exception>
         public void verifyUserInformation(string documentNumber = "", string fullName = "", string dob = "",
             string ageRange = "", string address = "", string postcode = "")
         {
@@ -943,14 +1018,14 @@ namespace IDAnalyzer
         }
 
         /// <summary>
-        /// Initiate a new identity document scan & ID face verification transaction by providing input images.
+        /// Initiate a new identity document scan and ID face verification transaction by providing input images.
         /// </summary>
         /// <param name="documentFront">Front of Document (file path, base64 content, url, or cache reference)</param>
         /// <param name="documentBack">Back of Document (file path, base64 content or URL, or cache reference)</param>
         /// <param name="facePhoto">Face Photo (file path, base64 content or URL, or cache reference)</param>
         /// <param name="faceVideo">Face Video (file path, base64 content or URL)</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when no KYC profile is set or the front document image is missing.</exception>
         public JObject scan(string documentFront = "", string documentBack = "", string facePhoto = "",
             string faceVideo = "")
         {
@@ -992,8 +1067,8 @@ namespace IDAnalyzer
         /// <param name="documentFront">Front of Document (file path, base64 content or URL)</param>
         /// <param name="documentBack">Back of Document (file path, base64 content or URL)</param>
         /// <param name="cacheImage">Cache uploaded image(s) for 24 hours and obtain a cache reference for each image, the reference hash can be used to start standard scan transaction without re-uploading the file.</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the front document image is missing.</exception>
         public JObject quickScan(string documentFront = "", string documentBack = "", bool cacheImage = false)
         {
             var payload = new Hashtable()
@@ -1023,8 +1098,8 @@ namespace IDAnalyzer
         /// <param name="documentFront">Front of Document (file path, base64 content or URL)</param>
         /// <param name="documentBack">Back of Document (file path, base64 content or URL)</param>
         /// <param name="cacheImage">Cache uploaded image(s) for 24 hours and obtain a cache reference for each image, the reference hash can be used to start standard scan transaction without re-uploading the file.</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the front document image is missing.</exception>
         public JObject veryQuickScan(string documentFront = "", string documentBack = "", bool cacheImage = false)
         {
             var payload = new Hashtable()
@@ -1049,8 +1124,15 @@ namespace IDAnalyzer
         }
     }
 
+    /// <summary>
+    /// Client for retrieving, listing, updating, deleting and exporting transaction records, and downloading transaction images and files.
+    /// </summary>
     public class Transaction : ApiParent
     {
+        /// <summary>
+        /// Initialize the Transaction client.
+        /// </summary>
+        /// <param name="apiKey">Your API key. If null, the IDANALYZER_KEY environment variable is used.</param>
         public Transaction(string? apiKey = null) : base(apiKey)
         {
         }
@@ -1059,8 +1141,8 @@ namespace IDAnalyzer
         /// Retrieve a single transaction record
         /// </summary>
         /// <param name="transactionId">Transaction ID</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the transaction ID is empty.</exception>
         public JObject getTransaction(string transactionId = "")
         {
             if (transactionId == "")
@@ -1084,8 +1166,8 @@ namespace IDAnalyzer
         /// <param name="filterDecision">Filter result by decision (accept, review, reject)</param>
         /// <param name="filterDocupass">Filter result by Docupass reference</param>
         /// <param name="filterProfileId">Filter result by KYC Profile ID</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when 'order' is not 1 or -1, or 'limit' is outside the range 1-100.</exception>
         public JObject listTransaction(int order = -1, int limit = 10, int offset = 0, int createdAtMin = 0,
             int createdAtMax = 0, string filterCustomData = "", string filterDecision = "", string filterDocupass = "",
             string filterProfileId = "")
@@ -1147,8 +1229,8 @@ namespace IDAnalyzer
         /// </summary>
         /// <param name="transactionId">Transaction ID</param>
         /// <param name="decision">New decision (accept, review or reject)</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the transaction ID is empty or the decision is not accept, review or reject.</exception>
         public JObject updateTransaction(string transactionId = "", string decision = "")
         {
             if (transactionId == "")
@@ -1175,8 +1257,8 @@ namespace IDAnalyzer
         /// Delete a transaction
         /// </summary>
         /// <param name="transactionId">Transaction ID</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the transaction ID is empty.</exception>
         public JObject deleteTransaction(string transactionId = "")
         {
             if (transactionId == "")
@@ -1193,7 +1275,7 @@ namespace IDAnalyzer
         /// </summary>
         /// <param name="imageToken">Image token from transaction API response</param>
         /// <param name="destination">Full destination path including file name, file extension should be jpg, for example: '\home\idcard.jpg'</param>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <exception cref="InvalidArgumentException">Thrown when the image token or destination is empty.</exception>
         public void saveImage(string imageToken = "", string destination = "")
         {
             if (imageToken == "")
@@ -1215,7 +1297,7 @@ namespace IDAnalyzer
         /// </summary>
         /// <param name="fileName">Secured file name</param>
         /// <param name="destination">Full destination path including file name, for example: '\home\auditreport.pdf'</param>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <exception cref="InvalidArgumentException">Thrown when the file name or destination is empty.</exception>
         public void saveFile(string fileName = "", string destination = "")
         {
             if (fileName == "")
@@ -1236,17 +1318,17 @@ namespace IDAnalyzer
         /// Download transaction archive onto local file system
         /// </summary>
         /// <param name="destination">Full destination path including file name, file extension should be zip, for example: '\home\archive.zip'</param>
-        /// <param name="transactionId">'csv' or 'json'</param>
-        /// <param name="exportType">Ignore unrecognized documents</param>
-        /// <param name="ignoreUnrecognized">Ignore duplicated entries</param>
-        /// <param name="ignoreDuplicate">Export only the specified transaction IDs</param>
+        /// <param name="transactionId">Export only the specified transaction IDs</param>
+        /// <param name="exportType">'csv' or 'json'</param>
+        /// <param name="ignoreUnrecognized">Ignore unrecognized documents</param>
+        /// <param name="ignoreDuplicate">Ignore duplicated entries</param>
         /// <param name="createdAtMin">Export only transactions that were created after this timestamp</param>
         /// <param name="createdAtMax">Export only transactions that were created before this timestamp</param>
         /// <param name="filterCustomData">Filter export by customData field</param>
         /// <param name="filterDecision">Filter export by decision (accept, review, reject)</param>
         /// <param name="filterDocupass">Filter export by Docupass reference</param>
         /// <param name="filterProfileId">Filter export by KYC Profile ID</param>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <exception cref="InvalidArgumentException">Thrown when the destination is empty or exportType is not 'csv' or 'json'.</exception>
         public void exportTransaction(string destination = "", List<string>? transactionId = null,
             string exportType = "csv", bool ignoreUnrecognized = false, bool ignoreDuplicate = false, int createdAtMin = 0,
             int createdAtMax = 0, string filterCustomData = "", string filterDecision = "", string filterDocupass = "",
@@ -1320,20 +1402,27 @@ namespace IDAnalyzer
         }
     }
 
+    /// <summary>
+    /// Client for managing Docupass remote verification sessions: list, create, retrieve and delete.
+    /// </summary>
     public class Docupass : ApiParent
     {
+        /// <summary>
+        /// Initialize the Docupass client.
+        /// </summary>
+        /// <param name="apiKey">Your API key. If null, the IDANALYZER_KEY environment variable is used.</param>
         public Docupass(string? apiKey = null) : base(apiKey)
         {
         }
 
         /// <summary>
-        /// 
+        /// Retrieve a list of Docupass verification sessions.
         /// </summary>
-        /// <param name="order"></param>
-        /// <param name="limit"></param>
-        /// <param name="offset"></param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <param name="order">Sort results by newest(-1) or oldest(1)</param>
+        /// <param name="limit">Number of items to be returned per call</param>
+        /// <param name="offset">Start the list from a particular entry index</param>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when 'order' is not 1 or -1, or 'limit' is outside the range 1-100.</exception>
         public JObject listDocupass(int order = -1, int limit = 10, int offset = 0)
         {
             if (order != 1 && order != -1)
@@ -1358,29 +1447,29 @@ namespace IDAnalyzer
         }
 
         /// <summary>
-        /// 
+        /// Create a new Docupass remote verification session.
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="contractFormat"></param>
-        /// <param name="contractGenerate"></param>
-        /// <param name="reusable"></param>
-        /// <param name="contractPrefill"></param>
-        /// <param name="contractSign"></param>
-        /// <param name="customData"></param>
-        /// <param name="language"></param>
-        /// <param name="mode"></param>
-        /// <param name="referenceDocument"></param>
-        /// <param name="referenceDocumentBack"></param>
-        /// <param name="referenceFace"></param>
-        /// <param name="userPhone"></param>
-        /// <param name="verifyAddress"></param>
-        /// <param name="verifyAge"></param>
-        /// <param name="verifyDOB"></param>
-        /// <param name="verifyDocumentNumber"></param>
-        /// <param name="verifyName"></param>
-        /// <param name="verifyPostcode"></param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <param name="profile">KYC Profile ID (string) or Profile to apply to the verification. Required.</param>
+        /// <param name="contractFormat">Generated contract format: pdf, docx or html.</param>
+        /// <param name="contractGenerate">Contract template ID(s) to auto-generate on completion.</param>
+        /// <param name="reusable">Whether the Docupass link can be used by multiple users.</param>
+        /// <param name="contractPrefill">Key-value data used to autofill contract dynamic fields.</param>
+        /// <param name="contractSign">Contract signing options.</param>
+        /// <param name="customData">Arbitrary string to store with the resulting transaction.</param>
+        /// <param name="language">Display language for the verification UI.</param>
+        /// <param name="mode">Verification mode.</param>
+        /// <param name="referenceDocument">Reference front document image to verify against.</param>
+        /// <param name="referenceDocumentBack">Reference back document image to verify against.</param>
+        /// <param name="referenceFace">Reference face image to verify against.</param>
+        /// <param name="userPhone">User phone number.</param>
+        /// <param name="verifyAddress">Expected address to match against the document.</param>
+        /// <param name="verifyAge">Expected age range (e.g. 18-40) to verify.</param>
+        /// <param name="verifyDOB">Expected date of birth to verify.</param>
+        /// <param name="verifyDocumentNumber">Expected document number to verify.</param>
+        /// <param name="verifyName">Expected full name to verify.</param>
+        /// <param name="verifyPostcode">Expected postcode to verify.</param>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when no profile is provided.</exception>
         public JObject createDocupass(object? profile = null, string contractFormat = "pdf", string contractGenerate = "",
             bool reusable = false, string contractPrefill = "", string contractSign = "", string customData = "",
             string language = "", int mode = 0, string referenceDocument = "", string referenceDocumentBack = "",
@@ -1434,11 +1523,11 @@ namespace IDAnalyzer
         }
 
         /// <summary>
-        /// 
+        /// Delete a Docupass verification session by reference.
         /// </summary>
-        /// <param name="reference"></param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <param name="reference">Docupass reference ID</param>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the reference is empty.</exception>
         public JObject deleteDocupass(string reference = "")
         {
             if (reference == "")
@@ -1452,8 +1541,8 @@ namespace IDAnalyzer
         /// Retrieve a single Docupass record by reference.
         /// </summary>
         /// <param name="reference">Docupass reference ID</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the reference is empty.</exception>
         public JObject getDocupass(string reference = "")
         {
             if (reference == "")
@@ -1464,8 +1553,15 @@ namespace IDAnalyzer
         }
     }
 
+    /// <summary>
+    /// Client for AML/PEP/sanctions screening via the v1 and v3 search endpoints.
+    /// </summary>
     public class AML : ApiParent
     {
+        /// <summary>
+        /// Initialize the AML client.
+        /// </summary>
+        /// <param name="apiKey">Your API key. If null, the IDANALYZER_KEY environment variable is used.</param>
         public AML(string? apiKey = null) : base(apiKey)
         {
         }
@@ -1479,8 +1575,8 @@ namespace IDAnalyzer
         /// <param name="country">Two digit ISO country code to filter by country/nationality</param>
         /// <param name="database">Optional list of databases to search, e.g. ["us_ofac","eu_fsf"]. If null all databases are searched.</param>
         /// <param name="birthYear">Filter by year of birth</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when neither 'name' nor 'idNumber' is provided.</exception>
         public JObject search(string name = "", string idNumber = "", int entity = 0, string country = "",
             string[]? database = null, string birthYear = "")
         {
@@ -1511,8 +1607,8 @@ namespace IDAnalyzer
         /// <param name="id">One or more AML entity IDs separated by comma or newline (max 50)</param>
         /// <param name="limit">Number of results to return per page</param>
         /// <param name="page">Result page number</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidArgumentException"></exception>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when neither 'text' nor 'id' is provided.</exception>
         public JObject searchV3(string text = "", string id = "", int limit = 0, int page = 0)
         {
             if (text == "" && id == "")
@@ -1532,12 +1628,26 @@ namespace IDAnalyzer
         }
     }
 
+    /// <summary>
+    /// Client for managing stored KYC profiles: list, get, create, update, delete and export.
+    /// </summary>
     public class ProfileAPI : ApiParent
     {
+        /// <summary>
+        /// Initialize the ProfileAPI client.
+        /// </summary>
+        /// <param name="apiKey">Your API key. If null, the IDANALYZER_KEY environment variable is used.</param>
         public ProfileAPI(string? apiKey = null) : base(apiKey)
         {
         }
 
+        /// <summary>
+        /// Build the request body for create/update profile calls from a name and a profile source.
+        /// </summary>
+        /// <param name="name">Profile name; omitted from the body when empty.</param>
+        /// <param name="profile">A <see cref="Profile"/> (its overrides are flattened into the body) or a <see cref="Hashtable"/>; null is allowed.</param>
+        /// <returns>The request body as a <see cref="Hashtable"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when <paramref name="profile"/> is neither a <see cref="Profile"/> nor a <see cref="Hashtable"/>.</exception>
         private static Hashtable ProfileBody(string name, object? profile)
         {
             var body = new Hashtable();
@@ -1567,6 +1677,11 @@ namespace IDAnalyzer
         }
 
         /// <summary>List KYC profiles.</summary>
+        /// <param name="order">Sort results by newest(-1) or oldest(1)</param>
+        /// <param name="limit">Number of items to be returned per call</param>
+        /// <param name="offset">Start the list from a particular entry index</param>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when 'order' is not 1 or -1.</exception>
         public JObject listProfile(int order = -1, int limit = 10, int offset = 0)
         {
             if (order != 1 && order != -1)
@@ -1585,6 +1700,9 @@ namespace IDAnalyzer
         }
 
         /// <summary>Retrieve a single KYC profile.</summary>
+        /// <param name="profileId">KYC Profile ID</param>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the profile ID is empty.</exception>
         public JObject getProfile(string profileId = "")
         {
             if (profileId == "") throw new InvalidArgumentException("'profileId' required.");
@@ -1595,6 +1713,8 @@ namespace IDAnalyzer
         /// <summary>Create a new KYC profile.</summary>
         /// <param name="name">Profile name</param>
         /// <param name="profile">A Profile object (its overrides become the profile config) or a Hashtable</param>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the profile name is empty, or 'profile' is neither a Profile nor a Hashtable.</exception>
         public JObject createProfile(string name = "", object? profile = null)
         {
             if (name == "") throw new InvalidArgumentException("Profile name required.");
@@ -1604,6 +1724,11 @@ namespace IDAnalyzer
         }
 
         /// <summary>Update an existing KYC profile.</summary>
+        /// <param name="profileId">KYC Profile ID</param>
+        /// <param name="name">Profile name</param>
+        /// <param name="profile">A Profile object (its overrides become the profile config) or a Hashtable</param>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the profile ID is empty, or 'profile' is neither a Profile nor a Hashtable.</exception>
         public JObject updateProfile(string profileId = "", string name = "", object? profile = null)
         {
             if (profileId == "") throw new InvalidArgumentException("'profileId' required.");
@@ -1613,6 +1738,9 @@ namespace IDAnalyzer
         }
 
         /// <summary>Delete a KYC profile.</summary>
+        /// <param name="profileId">KYC Profile ID</param>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the profile ID is empty.</exception>
         public JObject deleteProfile(string profileId = "")
         {
             if (profileId == "") throw new InvalidArgumentException("'profileId' required.");
@@ -1621,6 +1749,9 @@ namespace IDAnalyzer
         }
 
         /// <summary>Export a KYC profile (GET /export/profile/{id}).</summary>
+        /// <param name="profileId">KYC Profile ID</param>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the profile ID is empty.</exception>
         public JObject exportProfile(string profileId = "")
         {
             if (profileId == "") throw new InvalidArgumentException("'profileId' required.");
@@ -1629,13 +1760,28 @@ namespace IDAnalyzer
         }
     }
 
+    /// <summary>
+    /// Client for inspecting and managing webhook delivery logs.
+    /// </summary>
     public class Webhook : ApiParent
     {
+        /// <summary>
+        /// Initialize the Webhook client.
+        /// </summary>
+        /// <param name="apiKey">Your API key. If null, the IDANALYZER_KEY environment variable is used.</param>
         public Webhook(string? apiKey = null) : base(apiKey)
         {
         }
 
         /// <summary>List webhook delivery logs.</summary>
+        /// <param name="order">Sort results by newest(-1) or oldest(1)</param>
+        /// <param name="limit">Number of items to be returned per call</param>
+        /// <param name="offset">Start the list from a particular entry index</param>
+        /// <param name="ev">Filter by event name; empty for all events.</param>
+        /// <param name="success">Filter by delivery success: 1 for success, 0 for failure, any other value for all.</param>
+        /// <param name="createdAtMin">List deliveries created after this timestamp</param>
+        /// <param name="createdAtMax">List deliveries created before this timestamp</param>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
         public JObject listWebhook(int order = -1, int limit = 10, int offset = 0, string ev = "",
             int success = -1, string createdAtMin = "", string createdAtMax = "")
         {
@@ -1655,6 +1801,9 @@ namespace IDAnalyzer
         }
 
         /// <summary>Resend a webhook delivery.</summary>
+        /// <param name="webhookId">Webhook delivery ID</param>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the webhook ID is empty.</exception>
         public JObject resendWebhook(string webhookId = "")
         {
             if (webhookId == "") throw new InvalidArgumentException("'webhookId' required.");
@@ -1664,6 +1813,9 @@ namespace IDAnalyzer
         }
 
         /// <summary>Delete a webhook delivery log.</summary>
+        /// <param name="webhookId">Webhook delivery ID</param>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
+        /// <exception cref="InvalidArgumentException">Thrown when the webhook ID is empty.</exception>
         public JObject deleteWebhook(string webhookId = "")
         {
             if (webhookId == "") throw new InvalidArgumentException("'webhookId' required.");
@@ -1672,13 +1824,21 @@ namespace IDAnalyzer
         }
     }
 
+    /// <summary>
+    /// Client for retrieving the current account profile, quota and usage.
+    /// </summary>
     public class Account : ApiParent
     {
+        /// <summary>
+        /// Initialize the Account client.
+        /// </summary>
+        /// <param name="apiKey">Your API key. If null, the IDANALYZER_KEY environment variable is used.</param>
         public Account(string? apiKey = null) : base(apiKey)
         {
         }
 
         /// <summary>Retrieve current account profile, quota and usage.</summary>
+        /// <returns>The API response as a <see cref="JObject"/>.</returns>
         public JObject getAccount()
         {
             var resp = this.sess.GetAsync(Common.GetEndpoint("myaccount")).Result;
@@ -1686,22 +1846,43 @@ namespace IDAnalyzer
         }
     }
 
+    /// <summary>
+    /// Exception thrown when an argument supplied to an SDK method is missing or invalid.
+    /// </summary>
     public class InvalidArgumentException : Exception
     {
+        /// <summary>Initialize a new <see cref="InvalidArgumentException"/> with no message.</summary>
         public InvalidArgumentException() { }
+
+        /// <summary>Initialize a new <see cref="InvalidArgumentException"/> with the specified message.</summary>
+        /// <param name="errMsg">The error message describing the invalid argument.</param>
         public InvalidArgumentException(string errMsg) : base(errMsg) { }
     }
 
+    /// <summary>
+    /// Exception thrown when the API returns an error response (and throw-on-error is enabled).
+    /// </summary>
     public class ApiError : Exception
     {
-        public string Msg = "", Code = "";
+        /// <summary>The API error message.</summary>
+        public string Msg = "";
+
+        /// <summary>The API error code.</summary>
+        public string Code = "";
+
+        /// <summary>Initialize a new <see cref="ApiError"/> with no message or code.</summary>
         public ApiError() { }
 
+        /// <summary>Initialize a new <see cref="ApiError"/> with the specified message.</summary>
+        /// <param name="errMsg">The API error message.</param>
         public ApiError(string errMsg) : base(errMsg)
         {
             this.Msg = errMsg;
         }
 
+        /// <summary>Initialize a new <see cref="ApiError"/> with the specified message and code.</summary>
+        /// <param name="errMsg">The API error message.</param>
+        /// <param name="errCode">The API error code.</param>
         public ApiError(string errMsg, string errCode) : base(errMsg)
         {
             this.Msg = errMsg;
