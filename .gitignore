@@ -6,3 +6,6 @@ packages
 /**/bin/
 /**/obj/
 IDAnalyzer/log.txt
+
+# generated API-reference docs (not served; canonical reference is the KB)
+docs/
