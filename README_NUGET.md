@@ -14,8 +14,8 @@ dotnet add package IDAnalyzer.V2
 ```
 
 ## Base URL / Region
-Defaults to the US fleet (`https://api2.idanalyzer.com`). Set the environment
-variable `IDANALYZER_REGION=eu` to use the EU fleet (`https://api2-eu.idanalyzer.com`).
+Defaults to the US endpoint (`https://api2.idanalyzer.com`). Set the environment
+variable `IDANALYZER_REGION=eu` to use the EU endpoint (`https://api2-eu.idanalyzer.com`).
 An unrecognized value throws `InvalidArgumentException`.
 
 ## Quick start

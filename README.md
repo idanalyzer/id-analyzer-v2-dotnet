@@ -36,7 +36,7 @@ Targets .NET Standard 2.1 (works with .NET Core 3.x, .NET 5/6/8+).
 
 ## Authentication & region
 
-Pass your API key to each client, or set the `IDANALYZER_KEY` environment variable. The SDK targets the load-balanced US fleet (`https://api2.idanalyzer.com`) by default; set `IDANALYZER_REGION=eu` for the EU fleet (`https://api2-eu.idanalyzer.com`). An unrecognized region throws `InvalidArgumentException`.
+Pass your API key to each client, or set the `IDANALYZER_KEY` environment variable. The SDK targets the US endpoint (`https://api2.idanalyzer.com`) by default; set `IDANALYZER_REGION=eu` for the EU endpoint (`https://api2-eu.idanalyzer.com`). An unrecognized region throws `InvalidArgumentException`.
 
 ## Quick start
 

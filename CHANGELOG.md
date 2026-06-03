@@ -13,7 +13,7 @@ Full API v2 surface parity, bug fixes, and a dedicated v2 NuGet package id.
 
 ### Fixed
 - **Base URL** default `v2-us1.idanalyzer.com` (single node, no Cloudflare/LB/HA) →
-  load-balanced **`api2.idanalyzer.com`**. EU unchanged (`api2-eu` via `IDANALYZER_REGION=eu`).
+  **`api2.idanalyzer.com`**. EU unchanged (`api2-eu` via `IDANALYZER_REGION=eu`).
 - Unknown `IDANALYZER_REGION` now throws `InvalidArgumentException` instead of
   silently falling back to the US node.
 - Fixed `Transaction.updateTransaction` decision validation (`decision == "reject"`
