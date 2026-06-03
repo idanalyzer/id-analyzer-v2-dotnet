@@ -1,239 +1,101 @@
+# ID Analyzer .NET SDK — Identity Verification, KYC, Document & Biometric API
 
-# ID Analyzer .NET SDK
-This is a .Net SDK for [ID Analyzer Identity Verification APIs](https://www.idanalyzer.com), though all the APIs can be called with without the SDK using simple HTTP requests as outlined in the [documentation](https://developer.idanalyzer.com/help), you can use this SDK to accelerate server-side development.
+[![NuGet version](https://img.shields.io/nuget/v/IDAnalyzer.V2.svg)](https://www.nuget.org/packages/IDAnalyzer.V2)
+[![NuGet downloads](https://img.shields.io/nuget/dt/IDAnalyzer.V2.svg)](https://www.nuget.org/packages/IDAnalyzer.V2)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-We strongly discourage users to connect to ID Analyzer API endpoint directly  from client-side applications that will be distributed to end user, such as mobile app, or in-browser JavaScript. Your API key could be easily compromised, and if you are storing your customer's information inside Vault they could use your API key to fetch all your user details. Therefore, the best practice is always to implement a client side connection to your server, and call our APIs from the server-side.
+Official .NET / C# client library for the **[ID Analyzer](https://www.idanalyzer.com) API v2** — automate identity document verification, KYC onboarding and biometric checks in minutes.
+
+Scan and authenticate **passports, driver's licenses, ID cards, visas and residence permits from 190+ countries**, run **1:1 face match and liveness detection**, screen against **AML / PEP / sanctions** watchlists, and onboard users remotely with **DocuPass** hosted verification & e-signature.
+
+- 🌐 **Website:** [www.idanalyzer.com](https://www.idanalyzer.com)
+- 📚 **Developer docs & API reference:** [developer.idanalyzer.com](https://developer.idanalyzer.com/help)
+- 🔑 **Get your API key:** [portal2.idanalyzer.com](https://portal2.idanalyzer.com)
+- 💬 **Support:** support@idanalyzer.com
+
+## Features
+
+- **Document OCR & authentication** — passport, driver's license, ID card, visa & residence-permit recognition from 190+ countries, including MRZ and PDF417 / AAMVA barcode parsing.
+- **Biometric verification** — 1:1 face match and liveness / presentation-attack detection.
+- **AML screening** — PEP, sanctions, watchlist and adverse-media checks.
+- **DocuPass** — hosted, no-code remote identity verification, KYC/AML onboarding and legally-binding e-signature.
+- **KYC profiles, transaction vault, contract generation and webhooks.**
+- **US & EU data-residency regions.**
+
+> ⚠️ Never embed your API key in client-side apps (mobile, browser JS). Call the API from your server.
 
 ## Installation
-Install through the .NET CLI (the v2 SDK ships as **`IDAnalyzer.V2`** — the legacy
-`IDAnalyzer` package remains the API v1 SDK):
 
-```shell
+The v2 SDK ships as **`IDAnalyzer.V2`** (the legacy `IDAnalyzer` package id remains the API v1 SDK):
+
+```bash
 dotnet add package IDAnalyzer.V2
 ```
-Install through the Visual Studio Package Manager Console
 
-```shell
-Install-Package IDAnalyzer.V2
-```
+Targets .NET Standard 2.1 (works with .NET Core 3.x, .NET 5/6/8+).
 
-Alternatively, download this package and add the project under `/IDAnalyzer` to your solution.
+## Authentication & region
 
-## Base URL / Region
-By default the SDK targets the US fleet (`https://api2.idanalyzer.com`). To use the
-EU fleet (`https://api2-eu.idanalyzer.com`), set the `IDANALYZER_REGION` environment
-variable to `eu`:
+Pass your API key to each client, or set the `IDANALYZER_KEY` environment variable. The SDK targets the load-balanced US fleet (`https://api2.idanalyzer.com`) by default; set `IDANALYZER_REGION=eu` for the EU fleet (`https://api2-eu.idanalyzer.com`). An unrecognized region throws `InvalidArgumentException`.
 
-```shell
-set IDANALYZER_REGION=eu   REM "us" (default) or "eu"
-```
+## Quick start
 
-An unrecognized region value throws `InvalidArgumentException`.
-
-## API Coverage
-The SDK exposes the full ID Analyzer API v2 surface:
-
-- **Scanner** — `scan`, `quickScan`, `veryQuickScan`
-- **Biometric** — `verifyFace`, `verifyLiveness`
-- **AML** — `search` (`/aml`), `searchV3` (`/amlv3`)
-- **Contract** — `generate` + template CRUD
-- **Transaction** — get/list/update/delete, export, `saveImage`/`saveFile`
-- **Docupass** — `createDocupass`, `listDocupass`, `getDocupass`, `deleteDocupass`
-- **ProfileAPI** — KYC profile create/list/get/update/delete/export
-- **Webhook** — `listWebhook`, `resendWebhook`, `deleteWebhook`
-- **Account** — `getAccount` (`/myaccount`)
-
-## Scanner
-This category supports all scanning-related functions specifically used to initiate a new identity document scan & ID face verification transaction by uploading based64-encoded images.
-![Sample ID](https://www.idanalyzer.com/img/sampleid1.jpg)
-```c#
+```csharp
 using IDAnalyzer;
 
-try {
-    var p = new Profile(Profile.SECURITY_MEDIUM);
-    var s = new Scanner("OlZBrUWs4F60McKKKpuLKNY01XX7sm6B");
-    s.throwApiException(true);
-    var result = s.quickScan("05.jpg", "", true);
-    Console.WriteLine(result);
-    s.setProfile(p);
-    result = s.scan("05.jpg");
-    Console.WriteLine(result);
-} catch (ApiError err) {
-    Console.WriteLine($"{err.Msg} : {err.Code}");
-} catch (InvalidArgumentException err) {
-    Console.WriteLine(err.Message);
-} catch (Exception err) {
-    Console.WriteLine(err.Message);
-}
+var scanner = new Scanner("YOUR_API_KEY");
+scanner.throwApiException(true);
+scanner.setProfile(new Profile(Profile.SECURITY_MEDIUM));
+
+// Scan a document + selfie for biometric verification
+var result = scanner.scan("id_front.jpg", "", "selfie.jpg");
+Console.WriteLine(result["decision"]);   // accept / review / reject
 ```
 
-## Biometric
-There are two primary functions within this class. The first one is verifyFace and the second is verifyLiveness.
-```c#
+## Examples
+
+```csharp
 using IDAnalyzer;
 
-try
-{
-    var p = new Profile(Profile.SECURITY_MEDIUM);
-    var b = new Biometric("OlZBrUWs4F60McKKKpuLKNY01XX7sm6B");
-    b.throwApiException(true);
-    b.setProfile(p);
-    Console.WriteLine(b.verifyFace("1.jpg", "2.jpg"));
-    Console.WriteLine(b.verifyLiveness("1.jpg"));
-}
-catch (ApiError err)
-{
-    Console.WriteLine($"{err.Msg} : {err.Code}");
-}
-catch (InvalidArgumentException err)
-{
-    Console.WriteLine(err.Message);
-}
-catch (Exception err)
-{
-    Console.WriteLine(err.Message);
-}
+// AML / PEP / sanctions screening
+var aml = new AML("YOUR_API_KEY");
+aml.search("John Smith", "", 0, "US");        // POST /aml
+aml.searchV3("John Smith", "", 10, 1);        // POST /amlv3
+
+// DocuPass — hosted remote verification link
+var docupass = new Docupass("YOUR_API_KEY");
+var link = docupass.createDocupass("YOUR_PROFILE_ID");
+Console.WriteLine(link["url"]);
 ```
 
-## Contract
-All contract-related feature sets are available in Contract class. There are three primary functions in this class.
-```c#
-using IDAnalyzer;
+## API coverage
 
-try {
-    var c = new Contract("OlZBrUWs4F60McKKKpuLKNY01XX7sm6B");
-    c.throwApiException(true);
-    var temp = c.createTemplate("tempName", "<p>%{fullName}</p>");
-    var tempId = temp["templateId"].ToString();
-    Console.WriteLine(temp);
-    Console.WriteLine(c.updateTemplate(tempId, "oldTemp", "<p>%{fullName}</p><p>Hello!!</p>"));
-    Console.WriteLine(c.getTemplate(tempId));
-    Console.WriteLine(c.listTemplate());
-    Console.WriteLine(c.generate(tempId, "PDF", "", new Hashtable() {
-        { "fullName", "Tian"},
-    }));
-    Console.WriteLine(c.deleteTemplate(tempId));
-} catch (ApiError err) {
-    Console.WriteLine($"{err.Msg} : {err.Code}");
-} catch (InvalidArgumentException err) {
-    Console.WriteLine(err.Message);
-} catch (Exception err) {
-    Console.WriteLine(err.Message);
-}
-```
+The SDK wraps the complete ID Analyzer API v2 surface:
 
-## Docupass
-This category supports all rapid user verification based on the ids and the face images provided.
-![DocuPass Screen](https://www.idanalyzer.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdocupass-hero.0~_7a8exuldcn.webp&w=1080&q=75)
-```c#
-using IDAnalyzer;
+| Class | Methods |
+|---|---|
+| `Scanner` | `scan`, `quickScan`, `veryQuickScan` |
+| `Biometric` | `verifyFace`, `verifyLiveness` |
+| `AML` | `search` (`/aml`), `searchV3` (`/amlv3`) |
+| `Contract` | `generate` + template CRUD |
+| `Transaction` | `getTransaction`, `listTransaction`, `updateTransaction`, `deleteTransaction`, `exportTransaction`, `saveImage`, `saveFile` |
+| `Docupass` | `createDocupass`, `listDocupass`, `getDocupass`, `deleteDocupass` |
+| `ProfileAPI` | KYC profile create / list / get / update / delete / export |
+| `Webhook` | `listWebhook`, `resendWebhook`, `deleteWebhook` |
+| `Account` | `getAccount` |
+| `Profile` | client-side KYC profile-override builder |
 
-try {
-    var d = new Docupass("OlZBrUWs4F60McKKKpuLKNY01XX7sm6B");
-    d.throwApiException(true);
-    Console.WriteLine(d.createDocupass("bbd8436953ef426e98d078953f258835"));
-    Console.WriteLine(d.listDocupass());
-    Console.WriteLine(d.deleteDocupass("4PDPN8DRYF17GTEGEUS1T1SN"));
-} catch (ApiError err) {
-    Console.WriteLine($"{err.Msg} : {err.Code}");
-} catch (InvalidArgumentException err) {
-    Console.WriteLine(err.Message);
-} catch (Exception err) {
-    Console.WriteLine(err.Message);
-}
-```
+## Resources
 
-## Transaction
-This function enables the developer to retrieve a single transaction record based on the provided transactionId.
-```c#
-using IDAnalyzer;
+- [ID Analyzer website](https://www.idanalyzer.com)
+- [Developer documentation & API reference](https://developer.idanalyzer.com/help)
+- [.NET SDK guide](https://developer.idanalyzer.com/help/net)
+- [Dashboard — get your API key](https://portal2.idanalyzer.com)
 
-try {
-    var t = new Transaction("OlZBrUWs4F60McKKKpuLKNY01XX7sm6B");
-    t.throwApiException(true);
-    Console.WriteLine(t.getTransaction("bcefdaf921ca4393a6b9174ba44d3e8f"));
-    Console.WriteLine(t.listTransaction());
-    Console.WriteLine(t.updateTransaction("bcefdaf921ca4393a6b9174ba44d3e8f", "review"));
-    Console.WriteLine(t.deleteTransaction("bcefdaf921ca4393a6b9174ba44d3e8f"));
-    t.saveImage("9dd555648a7d594eadda39ea32adbd0fc08a1c79a9e4690cdc8d213f188f5376", "test.jpg");
-    t.saveFile("transaction-audit-report_iPYNUSKTD5HhpRb4tZpLdHMsiZKVZgWX.pdf", "test.pdf");
-    t.exportTransaction("./test.zip", new List<string>() { "a714d58a41874326874c7ce0052717ee", "cb45b0898aeb4a3b8fd578f136f4fafa" }, "json");
-} catch (ApiError err) {
-    Console.WriteLine($"{err.Msg} : {err.Code}");
-} catch (InvalidArgumentException err) {
-    Console.WriteLine(err.Message);
-} catch (Exception err) {
-    Console.WriteLine(err.Message);
-}
-```
+## Other ID Analyzer SDKs
 
-## AML
-Screen names, businesses and document numbers against global sanctions / PEP / watchlists.
-```c#
-using IDAnalyzer;
+[PHP](https://github.com/idanalyzer/id-analyzer-v2-php) · [Python](https://github.com/idanalyzer/id-analyzer-v2-python) · [Node.js](https://github.com/idanalyzer/id-analyzer-v2-nodejs) · [.NET](https://github.com/idanalyzer/id-analyzer-v2-dotnet) · [Java](https://github.com/idanalyzer/id-analyzer-v2-java) · [Go](https://github.com/idanalyzer/id-analyzer-v2-go)
 
-try {
-    var a = new AML("OlZBrUWs4F60McKKKpuLKNY01XX7sm6B");
-    a.throwApiException(true);
-    Console.WriteLine(a.search("John Smith", "", 0, "US"));   // POST /aml
-    Console.WriteLine(a.searchV3("John Smith", "", 10, 1));   // POST /amlv3
-} catch (ApiError err) {
-    Console.WriteLine($"{err.Msg} : {err.Code}");
-} catch (InvalidArgumentException err) {
-    Console.WriteLine(err.Message);
-}
-```
+## License
 
-## KYC Profiles (ProfileAPI)
-Create and manage server-side KYC profiles.
-```c#
-using IDAnalyzer;
-
-try {
-    var p = new ProfileAPI("OlZBrUWs4F60McKKKpuLKNY01XX7sm6B");
-    p.throwApiException(true);
-
-    var cfg = new Profile(Profile.SECURITY_MEDIUM);
-    cfg.decisionTrigger(1, 1);
-
-    var created = p.createProfile("My Onboarding Profile", cfg);
-    var profileId = created["profileId"].ToString();
-    p.updateProfile(profileId, "My Onboarding Profile (v2)", cfg);
-    Console.WriteLine(p.getProfile(profileId));
-    Console.WriteLine(p.listProfile());
-    p.exportProfile(profileId);
-    p.deleteProfile(profileId);
-} catch (ApiError err) {
-    Console.WriteLine($"{err.Msg} : {err.Code}");
-} catch (InvalidArgumentException err) {
-    Console.WriteLine(err.Message);
-}
-```
-
-## Webhook
-List, resend and delete webhook delivery logs.
-```c#
-using IDAnalyzer;
-
-var w = new Webhook("OlZBrUWs4F60McKKKpuLKNY01XX7sm6B");
-w.throwApiException(true);
-Console.WriteLine(w.listWebhook());
-// w.resendWebhook("<webhookId>");
-// w.deleteWebhook("<webhookId>");
-```
-
-## Account
-Retrieve account quota and usage.
-```c#
-using IDAnalyzer;
-
-var acc = new Account("OlZBrUWs4F60McKKKpuLKNY01XX7sm6B");
-acc.throwApiException(true);
-Console.WriteLine(acc.getAccount());
-```
-
-## Api Document
-[ID Analyzer Document](https://developer.idanalyzer.com/help)
-
-## SDK Reference
-Check out [ID Analyzer .NET Reference](https://developer.idanalyzer.com/help/net)
+MIT © [ID Analyzer](https://www.idanalyzer.com) — see [LICENSE](LICENSE).
