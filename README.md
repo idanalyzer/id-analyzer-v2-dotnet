@@ -124,7 +124,7 @@ try {
 
 ## Docupass
 This category supports all rapid user verification based on the ids and the face images provided.
-![DocuPass Screen](https://www.idanalyzer.com/img/docupassliveflow.jpg)
+![DocuPass Screen](https://www.idanalyzer.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdocupass-hero.0~_7a8exuldcn.webp&w=1080&q=75)
 ```c#
 using IDAnalyzer;
 
@@ -233,7 +233,7 @@ Console.WriteLine(acc.getAccount());
 ```
 
 ## Api Document
-[ID Analyzer Document](https://id-analyzer-v2.readme.io/docs/net)
+[ID Analyzer Document](https://idanalyzer.helptal.com/help)
 
 ## SDK Reference
-Check out [ID Analyzer .NET Reference](https://idanalyzer.github.io/id-analyzer-v2-dotnet/)
+Check out [ID Analyzer .NET Reference](https://idanalyzer.helptal.com/help/net)
