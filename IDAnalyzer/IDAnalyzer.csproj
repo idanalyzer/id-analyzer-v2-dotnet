@@ -13,7 +13,9 @@
     <Description>.NET client library for the ID Analyzer API v2. Scan and validate driver license, passport and ID card from any country, perform face/liveness biometric verification, AML/PEP screening, DocuPass remote verification and e-signature, KYC profile management and contract generation.</Description>
     <Copyright>(C) 2026 IDAnalyzer.com</Copyright>
     <PackageTags>id analyzer,passport,driver license,id card,identity verification,id verification,id ocr,pdf417,mrz,aamva,aml,pep,signature,sign document online</PackageTags>
-    <PackageReleaseNotes>1.1.2
+    <PackageReleaseNotes>1.1.3 — ship XML doc comments (IntelliSense) + completed inline API docs; README links the generated reference.
+
+1.1.2
 
 Added package icon. No functional changes.
 
@@ -23,9 +25,9 @@ Base URL now defaults to api2.idanalyzer.com; unknown IDANALYZER_REGION now thro
 Fixed updateTransaction decision validation and Profile.webhook protocol guard.</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/idanalyzer/id-analyzer-v2-dotnet</RepositoryUrl>
-    <AssemblyVersion>1.1.2.0</AssemblyVersion>
-    <FileVersion>1.1.2.0</FileVersion>
-    <Version>1.1.2</Version>
+    <AssemblyVersion>1.1.3.0</AssemblyVersion>
+    <FileVersion>1.1.3.0</FileVersion>
+    <Version>1.1.3</Version>
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
