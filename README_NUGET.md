@@ -5,12 +5,12 @@ worldwide passport, driver license and ID card scanning, biometric face/liveness
 verification, AML/PEP screening, DocuPass remote verification & e-signature, KYC
 profile management and contract generation.
 
-> This is the **API v2** SDK, published as **`IDAnalyzer.V2`**. The legacy
+> This is the **API v2** SDK, published as **`IDAnalyzerV2`**. The legacy
 > `IDAnalyzer` package id remains the API v1 SDK.
 
 ## Installation
 ```shell
-dotnet add package IDAnalyzer.V2
+dotnet add package IDAnalyzerV2
 ```
 
 ## Base URL / Region
